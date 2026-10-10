@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Russ Hamer</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,700;1,400&amp;family=DM+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0}
+a{color:#1b2232;text-decoration-thickness:1px;text-underline-offset:3px}a:hover{color:#e0531f}
+p{margin:0}
+.mono{font-family:'DM Mono',ui-monospace,monospace;font-size:12px}
+.it{position:absolute;height:46px;background:none;border:0;padding:0;margin:0;cursor:pointer;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;font:inherit;color:#1b2232;text-align:left}
+.it .lb{font-size:13px;line-height:1.1;white-space:nowrap;font-weight:500}
+.it .track{height:12px;width:100%;display:flex;align-items:center}
+.it .bar{display:block;width:100%}
+.it .pt{display:block;width:11px;height:11px;transform:rotate(45deg);flex:0 0 auto}
+.it:hover .lb{text-decoration:underline}
+.it:hover .plb,.it:focus-visible .plb{visibility:visible !important}
+.it:focus-visible{outline:2px solid #e0531f;outline-offset:3px}
+.plb{background:#ebebe5;padding:1px 4px}
+#detail:focus{outline:none}
+#detail{transition:box-shadow .6s ease}
+.lane-btn{font:inherit;font-weight:700;font-size:15px;color:#1b2232;background:none;border:0;padding:0;cursor:pointer;display:flex;align-items:center;gap:8px;text-align:left;min-height:32px}
+.lane-btn:hover{text-decoration:underline}
+.lg{display:flex;align-items:center;gap:8px}
+.lg i{display:inline-block;width:34px}
+.ext{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border:1.5px solid #1b2232;text-decoration:none;font-weight:500;box-sizing:border-box}
+.ext:hover{background:#1b2232;color:#ebebe5}
+.get{display:flex;flex-wrap:wrap;gap:4px 20px;padding:14px 0;border-top:1px solid #cfcfc7;align-items:baseline}
+.get b{flex:1 1 220px;font-weight:700}
+.get span{flex:2 1 240px;color:#43464d}
+.get a{flex:0 0 auto}
+</style>
+</helmet>
+<div style="background: #ebebe5; color: #1b2232; font-family: 'Familjen Grotesk', 'Helvetica Neue', sans-serif; font-size: 17px; line-height: 1.5">
+<div style="max-width: 1240px; margin: 0 auto; padding: 32px 22px 96px; display: flex; flex-direction: column; gap: 40px">
+
+<header style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px" class="mono">
+<span>russhamer.com</span>
+<span style="color: #5a5d64">Updated 9 October 2026</span>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px 56px; align-items: flex-end">
+<h1 style="margin: 0; flex: 0 0 auto; font-size: clamp(56px, 8.4vw, 116px); line-height: 0.88; font-weight: 700; letter-spacing: -0.04em">Russ<br>Hamer</h1>
+<div style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 12px; max-width: 560px">
+<p style="font-size: clamp(26px, 3vw, 34px); line-height: 1.15; font-weight: 500; letter-spacing: -0.015em">Too curious not to.</p>
+<p style="color: #43464d">Each row is a thread that’s run through my life. Click a thread to follow it, or anything on it to open it.</p>
+</div>
+</div>
+</header>
+
+<div class="mono" role="list" aria-label="Key" style="display: flex; flex-wrap: wrap; gap: 10px 26px; color: #43464d; border-top: 1px solid #1b2232; padding-top: 14px">
+<span class="lg" role="listitem"><i style="height: 12px; background: #1b2232"></i>a job</span>
+<span class="lg" role="listitem"><i style="height: 4px; background: #1b2232"></i>on my own time</span>
+<span class="lg" role="listitem"><span style="width: 10px; height: 10px; background: #1b2232; transform: rotate(45deg); display: inline-block; margin: 0 4px"></span>something you can read, play or wear</span>
+<span class="lg" role="listitem"><span style="color: #e0531f; font-size: 14px">●</span>I’m looking for someone</span>
+<span role="listitem" style="color: #5a5d64">Recent years get more room.</span>
+</div>
+
+<div style="overflow-x: auto; padding-bottom: 6px; margin-top: -12px">
+<div style="min-width: 1040px; display: flex; flex-direction: column; position: relative">
+<sc-for list="{{lanes}}" as="ln" hint-placeholder-count="6">
+<div style="display: flex; border-top: 1px solid #cfcfc7; opacity: {{ln.op}}; transition: opacity .3s">
+<div style="flex: 0 0 170px; padding: 10px 12px 0 0">
+<button type="button" class="lane-btn" onClick="{{ln.pick}}" aria-pressed="{{ln.pressed}}"><span style="width: 10px; height: 10px; background: {{ln.swatch}}; display: {{ln.swatchDisplay}}; flex: 0 0 auto"></span>{{ln.name}}</button>
+</div>
+<div style="flex: 1 1 auto; position: relative; height: {{ln.h}}px">
+<sc-for list="{{ln.items}}" as="it" hint-placeholder-count="3">
+<button type="button" class="it" onClick="{{it.pick}}" aria-pressed="{{it.pressed}}" aria-label="{{it.aria}}" style="left: {{it.left}}%; width: {{it.width}}; top: {{it.top}}px; align-items: {{it.align}}">
+<span class="lb" style="font-style: {{it.fs}}; color: {{it.labelColor}}; visibility: {{it.lbVis}}">{{it.name}}<sc-if value="{{it.looking}}" hint-placeholder-val="{{false}}"> <span style="color: #e0531f">●</span></sc-if></span>
+<span class="track" style="justify-content: {{it.align}}">
+<sc-if value="{{it.isBar}}" hint-placeholder-val="{{true}}"><span class="bar" style="height: {{it.h}}px; background: {{it.bg}}; box-shadow: {{it.ring}}"></span></sc-if>
+<sc-if value="{{it.isPoint}}" hint-placeholder-val="{{false}}"><span class="pt" style="background: {{it.color}}; box-shadow: {{it.ring}}; border-radius: {{it.radius}}; transform: {{it.tf}}; width: {{it.ps}}px; height: {{it.ps}}px"></span></sc-if>
+</span>
+</button>
+</sc-for>
+</div>
+</div>
+</sc-for>
+<div style="display: flex; border-top: 1px solid #1b2232">
+<div style="flex: 0 0 170px"></div>
+<div class="mono" style="flex: 1 1 auto; position: relative; height: 30px; color: #5a5d64">
+<sc-for list="{{ticks}}" as="tk" hint-placeholder-count="8">
+<span style="position: absolute; left: {{tk.x}}%; top: 0; height: 6px; border-left: 1px solid #1b2232"></span>
+<span style="position: absolute; left: {{tk.x}}%; top: 8px; transform: translateX(-50%)">{{tk.label}}</span>
+</sc-for>
+<span style="position: absolute; right: 0; top: 8px; color: #1b2232; font-weight: 500; background: #ebebe5; padding-left: 6px">now</span>
+</div>
+</div>
+<div aria-hidden="true" style="position: absolute; top: 0; bottom: 30px; right: 0; width: 0; border-right: 2px dashed #1b2232"></div>
+</div>
+</div>
+
+<section id="detail" ref="{{panelRef}}" tabIndex="-1" aria-live="polite" style="background: #f5f5f1; padding: 28px; border: 1px solid #cfcfc7; scroll-margin: 24px">
+<sc-if value="{{noSel}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; flex-wrap: wrap; gap: 20px 56px; align-items: flex-start">
+<div style="flex: 1 1 260px; display: flex; flex-direction: column; gap: 6px">
+<p class="mono" style="color: #5a5d64">9 October 2026</p>
+<h2 style="margin: 0; font-size: 36px; line-height: 1.05; letter-spacing: -0.02em">What’s new</h2>
+<p style="color: #43464d">Since the summer. Click anything on the timeline to open it.</p>
+</div>
+<ul style="flex: 2 1 480px; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column">
+<sc-for list="{{news}}" as="n" hint-placeholder-count="3">
+<li style="display: flex; flex-wrap: wrap; gap: 4px 16px; align-items: baseline; padding: 12px 0; border-top: 1px solid #cfcfc7">
+<button type="button" onClick="{{n.pick}}" style="font: inherit; font-weight: 700; background: none; border: 0; padding: 0; cursor: pointer; color: #1b2232; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; flex: 0 0 190px; text-align: left">{{n.name}}</button>
+<span class="mono" style="flex: 0 0 70px; color: #5a5d64">{{n.month}}</span>
+<span style="flex: 1 1 240px; color: #43464d">{{n.note}}</span>
+</li>
+</sc-for>
+</ul>
+</div>
+</sc-if>
+<sc-if value="{{hasSel}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: flex-start">
+<div style="flex: 1 1 300px; max-width: 420px; aspect-ratio: 16 / 10; background: #dddcd5; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #5a5d64; text-align: center; padding: 12px; box-sizing: border-box">[image: {{selName}}]</div>
+<div style="flex: 1 1 360px; display: flex; flex-direction: column; gap: 10px">
+<p class="mono" style="color: #5a5d64">{{selLane}} · {{selKind}} · {{selWhen}}</p>
+<h2 style="margin: 0; font-size: 36px; line-height: 1.05; letter-spacing: -0.02em">{{selName}}</h2>
+<p style="font-size: 19px; max-width: 560px">{{selLine}}</p>
+<p style="color: {{selStatusColor}}; font-weight: 500">{{selStatus}}</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px; padding-top: 6px">
+<sc-for list="{{selLinks}}" as="lk" hint-placeholder-count="1"><a class="ext" href="{{lk.href}}">{{lk.label}}</a></sc-for>
+<button type="button" onClick="{{clearSel}}" class="ext" style="background: none; font: inherit; font-weight: 500; cursor: pointer; border-color: #9a9da3; color: #43464d">← What’s new</button>
+</div>
+</div>
+</div>
+</sc-if>
+</section>
+
+<div style="display: flex; flex-wrap: wrap; gap: 48px 72px; padding-top: 32px">
+
+<section style="flex: 1 1 420px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 34px; line-height: 1; letter-spacing: -0.02em">Read</h2>
+<p style="color: #43464d">An essay every week on Substack. One hour, one sitting, no editing, no looking anything up, no AI.</p>
+<ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column">
+<li class="get"><b><a href="https://showeressays.substack.com/p/editing-is-for-suckers">Editing is for Suckers</a></b><span class="mono" style="flex: 0 0 auto">Aug 14</span></li>
+<li class="get"><b><a href="https://showeressays.substack.com/p/on-hallucinations">On Hallucinations</a></b><span class="mono" style="flex: 0 0 auto">Aug 7</span></li>
+<li class="get" style="border-bottom: 1px solid #cfcfc7"><b><a href="https://showeressays.substack.com/p/on-risk-taking">On Risk Taking</a></b><span class="mono" style="flex: 0 0 auto">Jul 29</span></li>
+</ol>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+<a class="ext" href="https://showeressays.substack.com/archive">All essays ↗</a>
+<a class="ext" href="https://showeressays.substack.com/subscribe" style="background: #1b2232; color: #ebebe5">Subscribe on Substack ↗</a>
+</div>
+<p style="color: #43464d; font-size: 15px; padding-top: 6px">Older writing: book chapters on <i>Futurama</i>, <i>It’s Always Sunny in Philadelphia</i>, <i>Black Mirror</i>, <i>Journey</i> and esports, all findable on the timeline.</p>
+</section>
+
+<section style="flex: 1 1 420px; display: flex; flex-direction: column; gap: 14px">
+<h2 style="margin: 0; font-size: 34px; line-height: 1; letter-spacing: -0.02em">Get</h2>
+<p style="color: #43464d">Where I set the price, it’s set at cost.</p>
+<div style="display: flex; flex-direction: column">
+<div class="get"><b>Unveiled</b><span>Two-player card game for adult couples. 18+. At cost.</span><a href="https://www.thegamecrafter.com/games/unveiled:-a-sensual-duel">The Game Crafter ↗</a></div>
+<div class="get"><b>Two t-shirts</b><span>At cost, rounded up to the nearest dollar.</span><a href="https://www.bonfire.com/store/too-curious-not-to/">Too Curious Not To ↗</a></div>
+<div class="get"><b><i>Understanding Kierkegaard’s Parables</i></b><span>Book, 2021. Publisher’s price, not mine.</span><a href="#">McFarland ↗</a></div>
+<div class="get"><b>“Designing Student Reflections…”</b><span>Article, <i>Teaching Philosophy</i> 42(2), 2019. Paywalled.</span><a href="https://www.pdcnet.org/teachphil/content/teachphil_2019_0042_0002_0087_0106">Journal ↗</a></div>
+<div class="get" style="border-bottom: 1px solid #cfcfc7"><b>Precedent</b><span>Free, in the browser, when it’s done. Not online yet.</span><a href="#write">Tell me when</a></div>
+</div>
+</section>
+
+</div>
+
+<footer id="write" style="display: flex; flex-wrap: wrap; gap: 24px 64px; align-items: flex-end; border-top: 2px solid #1b2232; padding-top: 28px; margin-top: 24px">
+<div style="flex: 1 1 360px; display: flex; flex-direction: column; gap: 6px">
+<p>The orange dots are where I’d like company.</p>
+<a href="mailto:hello@russhamer.com" style="font-size: clamp(30px, 4.4vw, 54px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; overflow-wrap: anywhere">hello@russhamer.com</a>
+<p class="mono" style="color: #5a5d64"><a href="https://www.linkedin.com/in/russhamer/">LinkedIn</a></p>
+</div>
+<form action="#" style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 8px; max-width: 520px">
+<label for="ln6-email">A short note a few times a year, when the threads change. Separate from the essays.</label>
+<span style="display: flex; flex-wrap: wrap">
+<input id="ln6-email" type="email" placeholder="Your email" style="flex: 1 1 220px; min-height: 48px; box-sizing: border-box; padding: 8px 14px; font: inherit; border: 1.5px solid #1b2232; border-radius: 0; background: #f5f5f1">
+<button type="submit" style="min-height: 48px; padding: 0 20px; font: inherit; font-weight: 700; border: 0; border-radius: 0; background: #1b2232; color: #ebebe5; cursor: pointer">Subscribe</button>
+</span>
+</form>
+</footer>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":2600}}'>
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { sel: null, lane: null };
+this.panel = null;
+this.setPanel = (el) => { this.panel = el; };
+}
+openItem(id) {
+// Pick the item, then once the box has re-rendered, bring it into view and move focus
+// to it, so keyboard and screen-reader users land on it too.
+this.setState({ sel: id });
+setTimeout(() => {
+const el = this.panel || document.getElementById('detail');
+if (!el) return;
+const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const r = el.getBoundingClientRect();
+const vh = window.innerHeight || document.documentElement.clientHeight;
+el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: r.height > vh ? 'start' : 'nearest' });
+try { el.focus({ preventScroll: true }); } catch (e) {}
+}, 60);
+}
+renderVals() {
+const NOW = 2026 + 9.3 / 12;
+const START = 2009.5;
+const K = 1.5;
+const span = Math.log(1 + (NOW - START) / K);
+const x = (y) => {
+const age = Math.max(0, NOW - y);
+return Math.max(0, Math.min(100, (1 - Math.log(1 + age / K) / span) * 100));
+};
+const SUB = 'https://showeressays.substack.com';
+const L = [
+{ id: 'phil', name: 'Philosophy & writing', color: '#2f5fc4', rows: 2, items: [
+{ id: 'futurama', name: 'Futurama and Philosophy', kind: 'thing', s: 2013.5, row: 1, line: 'Chapter: “It’s Only Sane to Hide the Body in Your Mattress.” Open Court, 2013.', status: 'Published', when: '2013', links: [{ label: 'Find the book ↗', href: '#' }] },
+{ id: 'sunny', name: 'It’s Always Sunny and Philosophy', kind: 'thing', s: 2015.5, row: 1, line: 'Chapter: “Why Science is a Liar Sometimes.” Open Court, 2015.', status: 'Published', when: '2015', links: [{ label: 'Find the book ↗', href: '#' }] },
+{ id: 'blackmirror', name: 'Black Mirror and Philosophy', kind: 'thing', s: 2019.15, row: 1, line: 'Chapter: “USS Callister and Non-Player Characters: How Should We Act in Video Games.” Wiley, 2019.', status: 'Published', when: '2019', links: [{ label: 'Find the book ↗', href: '#' }] },
+{ id: 'article', name: 'Teaching Philosophy article', kind: 'thing', s: 2019.75, row: 0, line: '“Designing Student Reflections to Enable Transformative Learning Experiences.” Teaching Philosophy 42(2), 2019.', status: 'Published', when: '2019', links: [{ label: 'Teaching Philosophy (paywalled) ↗', href: 'https://www.pdcnet.org/teachphil/content/teachphil_2019_0042_0002_0087_0106' }] },
+{ id: 'journey', name: 'Palgrave chapter on Journey', kind: 'thing', s: 2020.5, row: 1, line: 'Chapter: “Journey as Philosophy: Meaning, Purpose, and the Sublime.” The Palgrave Handbook of Popular Culture as Philosophy, 2020.', status: 'Published', when: '2020', links: [{ label: 'Find the book ↗', href: '#' }] },
+{ id: 'book', name: 'Understanding Kierkegaard’s Parables', kind: 'thing', showLabel: true, s: 2021.5, row: 0, line: 'My dissertation, as a book. McFarland, 2021.', status: 'In print (publisher’s price)', when: '2021', links: [{ label: 'McFarland ↗', href: '#' }] },
+{ id: 'esportsch', name: 'Routledge esports chapter', kind: 'thing', s: 2023.5, row: 1, line: 'Chapter: “Esports Games and Genres.” Routledge Handbook of Esports, 2023.', status: 'Published', when: '2023', links: [{ label: 'Find the book ↗', href: '#' }] },
+{ id: 'essays', name: 'Shower Essays', kind: 'own', series: true, kl: 'On my own time, and readable', s: 2026.37, e: NOW, row: 1, line: 'An essay every week: one hour, one sitting, no editing, no looking anything up, no AI. Each tick on the line is one essay.', status: 'Weekly', when: 'May 2026-now', links: [{ label: 'Read on Substack ↗', href: SUB }, { label: 'Subscribe ↗', href: SUB + '/subscribe' }] }
+] },
+{ id: 'edu', name: 'Education', color: '#11917a', rows: 3, items: [
+{ id: 'phd', name: 'PhD, Marquette', kind: 'job', kl: 'School', s: 2009.67, e: 2018.37, row: 0, past: true, line: 'Philosophy. My dissertation became the Kierkegaard book; my research was on reflection and how people come to understand things.', status: 'Finished', when: '2009-May 2018' },
+{ id: 'mu-adj', name: 'Marquette', kind: 'job', s: 2011.67, e: 2014.4, row: 1, past: true, line: 'Adjunct instructor: philosophy of human nature, logic, ethics.', status: 'Finished', when: '2011-2014' },
+{ id: 'wright', name: 'Wright College', kind: 'job', s: 2014.67, e: 2018.4, row: 1, past: true, line: 'Adjunct instructor at City Colleges of Chicago: intro to philosophy, humanities, ethics, popular culture.', status: 'Finished', when: '2014-2018' },
+{ id: 'isu', name: 'Illinois State', kind: 'job', s: 2018.67, e: 2019.4, row: 1, past: true, line: 'Instructional assistant professor of philosophy.', status: 'Finished', when: '2018-2019' },
+{ id: 'meet', name: 'Miami, emerging tech programs', kind: 'job', s: 2024.0, e: 2026.1, row: 1, past: true, line: 'Associate director of Miami University’s Master’s in Entrepreneurship and Emerging Technology; designed and taught a graduate course on emerging technology.', status: 'Finished', when: '2024-2026' },
+{ id: 'miami', name: 'Miami adjunct', kind: 'job', s: 2026.6, e: NOW, row: 1, line: 'Back at Miami University as an adjunct.', status: 'Ongoing', when: 'Fall 2026-now' },
+{ id: 'hs', name: 'High schools', kind: 'visits', kl: 'Volunteer, now and then', s: 2025.25, e: NOW, visits: [2025.3, 2025.8, 2026.3, 2026.72], row: 2, line: 'I’m happy to work with schools on how AI and learning fit together, and with students on entrepreneurial skills and what the entrepreneur path actually looks like. It happens about once a semester. If you run a school or a class and that sounds useful, email me.', status: 'About once a semester', when: 'Spring 2025-now', links: [{ label: 'Email me', href: '#write' }] }
+] },
+{ id: 'build', name: 'Ventures', color: '#7a45c7', rows: 3, items: [
+{ id: 'lyceum', name: 'Lyceum AI (CEO)', kind: 'job', s: 2023.0, e: 2026.2, row: 0, past: true, line: 'The EdTech startup I co-founded and ran. Our product is used at Fortune 500 companies; Perceptyx acquired it in 2026.', status: 'Acquired', when: '2023-2026' },
+{ id: 'develop', name: 'Develop at Perceptyx', kind: 'job', s: 2026.2, e: NOW, row: 0, line: 'Principal product manager for Develop, the AI learning product Lyceum built. My day job.', status: 'Day job', when: '2026-now', links: [{ label: 'About Develop ↗', href: '#' }] },
+{ id: 'sideris', name: 'Sideris', kind: 'own', kl: 'Side project', s: 2026.5, e: NOW, row: 1, line: 'A tool that helps a church see the gifts its members already have, through a short conversation that each member controls.', status: 'In progress', when: 'Jul 2026-now', links: [{ label: 'sideris-app.com ↗', href: 'https://sideris-app.com' }] },
+{ id: 'exercises', name: 'Strategy exercises', kind: 'own', kl: 'Side project', s: 2026.58, e: NOW, row: 2, looking: true, line: 'With two friends, I’m building custom strategy exercises for companies: a working model of a real problem your company is facing, run live with your own people in their real roles. We’re early, and looking for the first organization willing to try one.', status: 'Looking for a first organization', when: 'Aug 2026-now', links: [{ label: 'How it works', href: 'R6-Exercises.dc.html' }, { label: 'Email me about it', href: '#write' }] }
+] },
+{ id: 'games', name: 'Games', color: '#d0466b', rows: 2, items: [
+{ id: 'shade', name: 'SHADE (DARPA)', kind: 'job', kl: 'Consulting', s: 2021.0, e: 2023.0, row: 1, past: true, line: 'Consultant on a $1M DARPA AI grant about games: how people deceive in negotiation, and how an AI might tolerate and use deception in normal human ways.', status: 'Finished', when: '2021-2023' },
+{ id: 'unveiled', name: 'Unveiled', kind: 'thing', showLabel: true, s: 2026.37, row: 1, line: 'A two-player strategy card game for adult couples. I wanted to design an adult game where choice and autonomy were central, instead of leaving it all to randomness. It plays in about fifteen minutes.', status: '18+ · sold at cost', when: 'May 2026', links: [{ label: 'The Game Crafter ↗', href: 'https://www.thegamecrafter.com/games/unveiled:-a-sensual-duel' }] },
+{ id: 'precedent', name: 'Precedent', kind: 'own', kl: 'Side project', s: 2026.67, e: NOW, row: 0, looking: true, line: 'A digital wargame about kids’ imaginative play. Each level, you make up a new rule to help you beat it, and that rule stays in the game for good. The catch is that the computer gets to use your rules against you in later levels, so you have to be careful what you invent. It’s half wargame, half roguelike, half turn-based tactics, half Calvinball. It’ll be free, in the browser.', status: 'Not online yet. Playtesters wanted once it is.', when: 'Sep 2026-now', links: [{ label: 'Tell me when it’s playable', href: '#write' }] }
+] },
+{ id: 'esports', name: 'Esports', color: '#ad7708', rows: 2, items: [
+{ id: 'isuadv', name: 'ISU esports', kind: 'own', kl: 'Volunteer', s: 2018.67, e: 2019.4, row: 1, past: true, line: 'Faculty advisor, Redbird Esports at Illinois State.', status: 'Finished', when: '2018-2019' },
+{ id: 'msm', name: 'Mount St. Mary’s', kind: 'job', s: 2020.67, e: 2024.4, row: 0, past: true, line: 'Director of esports. Designed three courses and a new minor in Esports and Game Studies.', status: 'Finished', when: '2020-2024' },
+{ id: 'voice', name: 'VOICE', kind: 'own', kl: 'Volunteer', s: 2021.0, e: 2025.4, row: 1, past: true, line: 'Co-executive director of VOICE of Intercollegiate Esports, a nonprofit working to improve collegiate esports. Took it from insolvent to stable.', status: 'Finished', when: '2021-2025' },
+{ id: 'usae', name: 'USA Esports', kind: 'own', kl: 'Volunteer', s: 2026.3, e: NOW, row: 0, line: 'Head of innovation; chair of the ethics committee.', status: 'Ongoing', when: '2026-now', links: [{ label: 'USA Esports ↗', href: '#' }] }
+] },
+{ id: 'hobbies', name: 'Hobbies', color: '#6f6c66', rows: 3, items: [
+{ id: 'boardgames', name: 'Board games', kind: 'own', kl: 'Hobby', s: 2009.5, e: NOW, row: 0, line: 'Always Dune (the GF9 edition). Lately also Wingspan Pocket, Old King’s Crown, Lost Ruins of Arnak, Everdell, and Rebirth.', status: 'Always playing something', when: 'forever' },
+{ id: 'rocks', name: 'Rocks', kind: 'own', kl: 'Hobby', s: 2015.0, e: NOW, row: 1, line: 'My father was a geologist, and I grew up admiring his rock collection. I’m not sure where most of his rocks came from, though I know he collected some of them in college. Most of mine I’ve bought, with a few lucky finds. Lately I’ve been getting my daughter into rocks too, and we have a tumbler where I mostly fail at making rocks pretty enough for her to turn into jewelry.', status: 'I can’t identify most of them. Help welcome.', when: '~2015-now' },
+{ id: 'shirts', name: 'Two t-shirts', kind: 'thing', showLabel: true, s: 2026.75, row: 2, line: 'Two designs in my shop, Too Curious Not To.', status: 'At cost, rounded up to the nearest dollar', when: 'Oct 2026', links: [{ label: 'Too Curious Not To ↗', href: 'https://www.bonfire.com/store/too-curious-not-to/' }] }
+] }
+];
+const INK = '#1b2232';
+const sel = this.state.sel;
+const focus = this.state.lane;
+let selItem = null;
+let selLane = null;
+const lanes = L.map((ln) => ({
+name: ln.name,
+swatch: ln.color,
+swatchDisplay: 'inline-block',
+h: ln.rows * 52 + 8,
+op: !focus || focus === ln.id ? 1 : 0.22,
+pressed: focus === ln.id ? 'true' : 'false',
+pick: () => this.setState({ lane: focus === ln.id ? null : ln.id }),
+items: ln.items.reduce((acc, it) => {
+if (it.kind === 'visits') { it.visits.forEach((v, i) => acc.push(Object.assign({}, it, { kind: 'dot', s: v, first: i === 0 }))); }
+else { acc.push(it); }
+return acc;
+}, []).map((it) => {
+const isDot = it.kind === 'dot';
+const isBar = it.kind !== 'thing' && !isDot;
+const on = it.id === sel;
+if (on) { selItem = it; selLane = ln; }
+const left = x(it.s);
+const right = isBar ? x(it.e) : left;
+const c = it.past ? ln.color + '73' : ln.color;
+let h = it.kind === 'own' ? 4 : 12;
+let bg = c;
+if (it.series) {
+h = 12;
+bg = 'linear-gradient(' + c + ', ' + c + ') center / 100% 4px no-repeat, repeating-linear-gradient(90deg, ' + c + ' 0 2px, transparent 2px 5px)';
+}
+return {
+name: it.name,
+aria: it.name + (it.looking ? ', looking for someone' : ''),
+looking: !!it.looking,
+isBar: isBar,
+isPoint: !isBar,
+left: left.toFixed(2),
+width: isBar ? Math.max(0.6, right - left).toFixed(2) + '%' : '12px',
+top: it.row * 52 + 2,
+align: left > 78 ? 'flex-end' : 'flex-start',
+fs: it.past ? 'italic' : 'normal',
+labelColor: it.past ? '#5a5d64' : INK,
+lbVis: isBar || it.showLabel || (isDot ? it.first : on) ? 'visible' : 'hidden',
+radius: isDot ? '50%' : '0',
+tf: isDot ? 'none' : 'rotate(45deg)',
+ps: isDot ? 9 : 11,
+h: h,
+bg: bg,
+color: c,
+ring: on ? '0 0 0 3px #ebebe5, 0 0 0 5px ' + INK : 'none',
+pressed: on ? 'true' : 'false',
+pick: () => this.openItem(it.id)
+};
+})
+}));
+const ticks = [2010, 2013, 2016, 2019, 2021, 2023, 2024, 2025, 2026].map((y) => ({ label: String(y), x: x(y).toFixed(2) }));
+const find = (id) => {
+for (const ln of L) { for (const it of ln.items) { if (it.id === id) return it; } }
+return null;
+};
+const NEWS = [
+{ id: 'shirts', month: 'Oct', note: 'Made two t-shirt designs. They’re at cost.' },
+{ id: 'precedent', month: 'Sep', note: 'Started building Precedent, a digital wargame. Playtesters wanted once it’s online.' },
+{ id: 'exercises', month: 'Aug', note: 'Started building strategy exercises for companies with two friends. Looking for a first organization.' }
+];
+const news = NEWS.map((n) => ({ name: find(n.id).name, month: n.month, note: n.note, pick: () => this.setState({ sel: n.id }) }));
+const s = selItem || { name: '', line: '', status: '', when: '', kind: 'job' };
+const sl = selLane || { name: '' };
+const KIND = { job: 'Job', own: 'On my own time', thing: 'Something you can get' };
+return {
+panelRef: this.setPanel,
+lanes,
+ticks,
+news,
+hasSel: !!selItem,
+noSel: !selItem,
+clearSel: () => this.setState({ sel: null }),
+selName: s.name,
+selLine: s.line,
+selStatus: s.status,
+selWhen: s.when,
+selKind: s.kl || KIND[s.kind],
+selLane: sl.name,
+selStatusColor: s.looking ? '#b8410e' : '#5a5d64',
+selLinks: s.links || []
+};
+}
+}
+</script>
+</body>
+</html>

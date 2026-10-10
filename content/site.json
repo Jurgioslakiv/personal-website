@@ -1,0 +1,590 @@
+{
+  "updated": "2026-10-10",
+  "meta": {
+    "title": "Russ Hamer",
+    "description": "Russ Hamer: philosophy, education, ventures, games, esports, and a rock collection he can't identify.",
+    "url": "https://russhamer.com/"
+  },
+  "intro": {
+    "name": "Russ Hamer",
+    "tagline": "Too curious not to.",
+    "hint": "Each row is a thread that’s run through my life. Click a thread to follow it, or anything on it to open it."
+  },
+  "contact": {
+    "email": "hello@russhamer.com",
+    "linkedin": "https://www.linkedin.com/in/russhamer/",
+    "closingLine": "The orange dots are where I’d like company.",
+    "newsletter": {
+      "label": "A short note a few times a year, when the threads change. Separate from the essays.",
+      "provider": "buttondown",
+      "username": "TODO"
+    }
+  },
+  "timeline": {
+    "start": "2009-07",
+    "now": "auto",
+    "scaleK": 1.5,
+    "ticks": [
+      2010,
+      2013,
+      2016,
+      2019,
+      2021,
+      2023,
+      2024,
+      2025,
+      2026
+    ]
+  },
+  "whatsNew": {
+    "date": "2026-10-09",
+    "since": "Since the summer.",
+    "items": [
+      {
+        "id": "shirts",
+        "month": "Oct",
+        "note": "Made two t-shirt designs. They’re at cost."
+      },
+      {
+        "id": "precedent",
+        "month": "Sep",
+        "note": "Started building Precedent, a digital wargame. Playtesters wanted once it’s online."
+      },
+      {
+        "id": "exercises",
+        "month": "Aug",
+        "note": "Started building strategy exercises for companies with two friends. Looking for a first organization."
+      }
+    ]
+  },
+  "read": {
+    "substack": "https://showeressays.substack.com",
+    "archive": "https://showeressays.substack.com/archive",
+    "subscribe": "https://showeressays.substack.com/subscribe",
+    "blurb": "An essay every week on Substack. One hour, one sitting, no editing, no looking anything up, no AI.",
+    "olderWriting": "Older writing: book chapters on *Futurama*, *It’s Always Sunny in Philadelphia*, *Black Mirror*, *Journey* and esports, all findable on the timeline."
+  },
+  "get": {
+    "blurb": "Where I set the price, it’s set at cost.",
+    "items": [
+      {
+        "name": "Unveiled",
+        "text": "Two-player card game for adult couples. 18+. At cost.",
+        "linkLabel": "The Game Crafter",
+        "href": "https://www.thegamecrafter.com/games/unveiled:-a-sensual-duel"
+      },
+      {
+        "name": "Two t-shirts",
+        "text": "At cost, rounded up to the nearest dollar.",
+        "linkLabel": "Too Curious Not To",
+        "href": "https://www.bonfire.com/store/too-curious-not-to/"
+      },
+      {
+        "name": "Understanding Kierkegaard’s Parables",
+        "italic": true,
+        "text": "Book, 2021. Publisher’s price, not mine.",
+        "linkLabel": "McFarland",
+        "href": "TODO: McFarland product page"
+      },
+      {
+        "name": "“Designing Student Reflections…”",
+        "text": "Article, *Teaching Philosophy* 42(2), 2019. Paywalled.",
+        "linkLabel": "Journal",
+        "href": "https://www.pdcnet.org/teachphil/content/teachphil_2019_0042_0002_0087_0106"
+      },
+      {
+        "name": "Precedent",
+        "text": "Free, in the browser, when it’s done. Not online yet.",
+        "linkLabel": "Tell me when",
+        "href": "#contact"
+      }
+    ]
+  },
+  "threads": [
+    {
+      "id": "phil",
+      "name": "Philosophy & writing",
+      "color": "#2f5fc4",
+      "rows": 2,
+      "items": [
+        {
+          "id": "futurama",
+          "name": "Futurama and Philosophy",
+          "type": "thing",
+          "date": "2013-07",
+          "row": 1,
+          "when": "2013",
+          "text": "Chapter: “It’s Only Sane to Hide the Body in Your Mattress.” Open Court, 2013.",
+          "status": "Published",
+          "links": [
+            {
+              "label": "Find the book ↗",
+              "href": "TODO"
+            }
+          ]
+        },
+        {
+          "id": "sunny",
+          "name": "It’s Always Sunny and Philosophy",
+          "type": "thing",
+          "date": "2015-07",
+          "row": 1,
+          "when": "2015",
+          "text": "Chapter: “Why Science is a Liar Sometimes.” Open Court, 2015.",
+          "status": "Published",
+          "links": [
+            {
+              "label": "Find the book ↗",
+              "href": "TODO"
+            }
+          ]
+        },
+        {
+          "id": "blackmirror",
+          "name": "Black Mirror and Philosophy",
+          "type": "thing",
+          "date": "2019-02",
+          "row": 1,
+          "when": "2019",
+          "text": "Chapter: “USS Callister and Non-Player Characters: How Should We Act in Video Games.” Wiley, 2019.",
+          "status": "Published",
+          "links": [
+            {
+              "label": "Find the book ↗",
+              "href": "TODO"
+            }
+          ]
+        },
+        {
+          "id": "article",
+          "name": "Teaching Philosophy article",
+          "type": "thing",
+          "date": "2019-10",
+          "row": 0,
+          "when": "2019",
+          "text": "“Designing Student Reflections to Enable Transformative Learning Experiences.” Teaching Philosophy 42(2), 2019.",
+          "status": "Published",
+          "links": [
+            {
+              "label": "Teaching Philosophy (paywalled) ↗",
+              "href": "https://www.pdcnet.org/teachphil/content/teachphil_2019_0042_0002_0087_0106"
+            }
+          ]
+        },
+        {
+          "id": "journey",
+          "name": "Palgrave chapter on Journey",
+          "type": "thing",
+          "date": "2020-07",
+          "row": 1,
+          "when": "2020",
+          "text": "Chapter: “Journey as Philosophy: Meaning, Purpose, and the Sublime.” The Palgrave Handbook of Popular Culture as Philosophy, 2020.",
+          "status": "Published",
+          "links": [
+            {
+              "label": "Find the book ↗",
+              "href": "TODO"
+            }
+          ]
+        },
+        {
+          "id": "book",
+          "name": "Understanding Kierkegaard’s Parables",
+          "type": "thing",
+          "date": "2021-07",
+          "row": 0,
+          "alwaysShowLabel": true,
+          "when": "2021",
+          "text": "My dissertation, as a book. McFarland, 2021.",
+          "status": "In print (publisher’s price)",
+          "links": [
+            {
+              "label": "McFarland ↗",
+              "href": "TODO"
+            }
+          ]
+        },
+        {
+          "id": "esportsch",
+          "name": "Routledge esports chapter",
+          "type": "thing",
+          "date": "2023-07",
+          "row": 1,
+          "when": "2023",
+          "text": "Chapter: “Esports Games and Genres.” Routledge Handbook of Esports, 2023.",
+          "status": "Published",
+          "links": [
+            {
+              "label": "Find the book ↗",
+              "href": "TODO"
+            }
+          ]
+        },
+        {
+          "id": "essays",
+          "name": "Shower Essays",
+          "type": "series",
+          "start": "2026-05",
+          "end": "now",
+          "row": 1,
+          "detailLabel": "On my own time, and readable",
+          "when": "May 2026-now",
+          "text": "An essay every week: one hour, one sitting, no editing, no looking anything up, no AI. Each tick on the line is one essay.",
+          "status": "Weekly",
+          "links": [
+            {
+              "label": "Read on Substack ↗",
+              "href": "https://showeressays.substack.com"
+            },
+            {
+              "label": "Subscribe ↗",
+              "href": "https://showeressays.substack.com/subscribe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "edu",
+      "name": "Education",
+      "color": "#11917a",
+      "rows": 3,
+      "items": [
+        {
+          "id": "phd",
+          "name": "PhD, Marquette",
+          "type": "job",
+          "start": "2009-09",
+          "end": "2018-05",
+          "row": 0,
+          "detailLabel": "School",
+          "when": "2009-May 2018",
+          "text": "Philosophy. My dissertation became the Kierkegaard book; my research was on reflection and how people come to understand things.",
+          "status": "Finished"
+        },
+        {
+          "id": "mu-adj",
+          "name": "Marquette",
+          "type": "job",
+          "start": "2011-09",
+          "end": "2014-05",
+          "row": 1,
+          "when": "2011-2014",
+          "text": "Adjunct instructor: philosophy of human nature, logic, ethics.",
+          "status": "Finished"
+        },
+        {
+          "id": "wright",
+          "name": "Wright College",
+          "type": "job",
+          "start": "2014-09",
+          "end": "2018-05",
+          "row": 1,
+          "when": "2014-2018",
+          "text": "Adjunct instructor at City Colleges of Chicago: intro to philosophy, humanities, ethics, popular culture.",
+          "status": "Finished"
+        },
+        {
+          "id": "isu",
+          "name": "Illinois State",
+          "type": "job",
+          "start": "2018-09",
+          "end": "2019-05",
+          "row": 1,
+          "when": "2018-2019",
+          "text": "Instructional assistant professor of philosophy.",
+          "status": "Finished"
+        },
+        {
+          "id": "meet",
+          "name": "Miami, emerging tech programs",
+          "type": "job",
+          "start": "2024-01",
+          "end": "2026-02",
+          "row": 1,
+          "when": "2024-2026",
+          "text": "Associate director of Miami University’s Master’s in Entrepreneurship and Emerging Technology; designed and taught a graduate course on emerging technology.",
+          "status": "Finished"
+        },
+        {
+          "id": "miami",
+          "name": "Miami adjunct",
+          "type": "job",
+          "start": "2026-08",
+          "end": "now",
+          "row": 1,
+          "when": "Fall 2026-now",
+          "text": "Back at Miami University as an adjunct.",
+          "status": "Ongoing"
+        },
+        {
+          "id": "hs",
+          "name": "High schools",
+          "type": "visits",
+          "start": "2025-04",
+          "end": "now",
+          "visits": [
+            "2025-04",
+            "2025-10",
+            "2026-04",
+            "2026-09"
+          ],
+          "row": 2,
+          "detailLabel": "Volunteer, now and then",
+          "when": "Spring 2025-now",
+          "text": "I’m happy to work with schools on how AI and learning fit together, and with students on entrepreneurial skills and what the entrepreneur path actually looks like. It happens about once a semester. If you run a school or a class and that sounds useful, email me.",
+          "status": "About once a semester",
+          "links": [
+            {
+              "label": "Email me",
+              "href": "#contact"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build",
+      "name": "Ventures",
+      "color": "#7a45c7",
+      "rows": 3,
+      "items": [
+        {
+          "id": "lyceum",
+          "name": "Lyceum AI (CEO)",
+          "type": "job",
+          "start": "2023-01",
+          "end": "2026-03",
+          "row": 0,
+          "when": "2023-2026",
+          "text": "The EdTech startup I co-founded and ran. Our product is used at Fortune 500 companies; Perceptyx acquired it in 2026.",
+          "status": "Acquired"
+        },
+        {
+          "id": "develop",
+          "name": "Develop at Perceptyx",
+          "type": "job",
+          "start": "2026-03",
+          "end": "now",
+          "row": 0,
+          "when": "2026-now",
+          "text": "Principal product manager for Develop, the AI learning product Lyceum built. My day job.",
+          "status": "Day job",
+          "links": [
+            {
+              "label": "About Develop ↗",
+              "href": "TODO"
+            }
+          ]
+        },
+        {
+          "id": "sideris",
+          "name": "Sideris",
+          "type": "own-time",
+          "start": "2026-07",
+          "end": "now",
+          "row": 1,
+          "detailLabel": "Side project",
+          "when": "Jul 2026-now",
+          "text": "A tool that helps a church see the gifts its members already have, through a short conversation that each member controls.",
+          "status": "In progress",
+          "links": [
+            {
+              "label": "sideris-app.com ↗",
+              "href": "https://sideris-app.com"
+            }
+          ]
+        },
+        {
+          "id": "exercises",
+          "name": "Strategy exercises",
+          "type": "own-time",
+          "start": "2026-08",
+          "end": "now",
+          "row": 2,
+          "detailLabel": "Side project",
+          "lookingForSomeone": true,
+          "when": "Aug 2026-now",
+          "text": "With two friends, I’m building custom strategy exercises for companies: a working model of a real problem your company is facing, run live with your own people in their real roles. We’re early, and looking for the first organization willing to try one.",
+          "status": "Looking for a first organization",
+          "links": [
+            {
+              "label": "How it works",
+              "href": "/strategy-exercises/"
+            },
+            {
+              "label": "Email me about it",
+              "href": "#contact"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "games",
+      "name": "Games",
+      "color": "#d0466b",
+      "rows": 2,
+      "items": [
+        {
+          "id": "shade",
+          "name": "SHADE (DARPA)",
+          "type": "job",
+          "start": "2021-01",
+          "end": "2023-01",
+          "row": 1,
+          "detailLabel": "Consulting",
+          "when": "2021-2023",
+          "text": "Consultant on a $1M DARPA AI grant about games: how people deceive in negotiation, and how an AI might tolerate and use deception in normal human ways.",
+          "status": "Finished"
+        },
+        {
+          "id": "unveiled",
+          "name": "Unveiled",
+          "type": "thing",
+          "date": "2026-05",
+          "row": 1,
+          "alwaysShowLabel": true,
+          "when": "May 2026",
+          "text": "A two-player strategy card game for adult couples. I wanted to design an adult game where choice and autonomy were central, instead of leaving it all to randomness. It plays in about fifteen minutes.",
+          "status": "18+ · sold at cost",
+          "links": [
+            {
+              "label": "The Game Crafter ↗",
+              "href": "https://www.thegamecrafter.com/games/unveiled:-a-sensual-duel"
+            }
+          ]
+        },
+        {
+          "id": "precedent",
+          "name": "Precedent",
+          "type": "own-time",
+          "start": "2026-09",
+          "end": "now",
+          "row": 0,
+          "detailLabel": "Side project",
+          "lookingForSomeone": true,
+          "when": "Sep 2026-now",
+          "text": "A digital wargame about kids’ imaginative play. Each level, you make up a new rule to help you beat it, and that rule stays in the game for good. The catch is that the computer gets to use your rules against you in later levels, so you have to be careful what you invent. It’s half wargame, half roguelike, half turn-based tactics, half Calvinball. It’ll be free, in the browser.",
+          "status": "Not online yet. Playtesters wanted once it is.",
+          "links": [
+            {
+              "label": "Tell me when it’s playable",
+              "href": "#contact"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esports",
+      "name": "Esports",
+      "color": "#ad7708",
+      "rows": 2,
+      "items": [
+        {
+          "id": "isuadv",
+          "name": "ISU esports",
+          "type": "own-time",
+          "start": "2018-09",
+          "end": "2019-05",
+          "row": 1,
+          "detailLabel": "Volunteer",
+          "when": "2018-2019",
+          "text": "Faculty advisor, Redbird Esports at Illinois State.",
+          "status": "Finished"
+        },
+        {
+          "id": "msm",
+          "name": "Mount St. Mary’s",
+          "type": "job",
+          "start": "2020-09",
+          "end": "2024-05",
+          "row": 0,
+          "when": "2020-2024",
+          "text": "Director of esports. Designed three courses and a new minor in Esports and Game Studies.",
+          "status": "Finished"
+        },
+        {
+          "id": "voice",
+          "name": "VOICE",
+          "type": "own-time",
+          "start": "2021-01",
+          "end": "2025-05",
+          "row": 1,
+          "detailLabel": "Volunteer",
+          "when": "2021-2025",
+          "text": "Co-executive director of VOICE of Intercollegiate Esports, a nonprofit working to improve collegiate esports. Took it from insolvent to stable.",
+          "status": "Finished"
+        },
+        {
+          "id": "usae",
+          "name": "USA Esports",
+          "type": "own-time",
+          "start": "2026-04",
+          "end": "now",
+          "row": 0,
+          "detailLabel": "Volunteer",
+          "when": "2026-now",
+          "text": "Head of innovation; chair of the ethics committee.",
+          "status": "Ongoing",
+          "links": [
+            {
+              "label": "USA Esports ↗",
+              "href": "TODO"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hobbies",
+      "name": "Hobbies",
+      "color": "#6f6c66",
+      "rows": 3,
+      "items": [
+        {
+          "id": "boardgames",
+          "name": "Board games",
+          "type": "own-time",
+          "start": "2009-07",
+          "end": "now",
+          "row": 0,
+          "detailLabel": "Hobby",
+          "when": "forever",
+          "text": "Always Dune (the GF9 edition). Lately also Wingspan Pocket, Old King’s Crown, Lost Ruins of Arnak, Everdell, and Rebirth.",
+          "status": "Always playing something"
+        },
+        {
+          "id": "rocks",
+          "name": "Rocks",
+          "type": "own-time",
+          "start": "2015-01",
+          "end": "now",
+          "row": 1,
+          "detailLabel": "Hobby",
+          "when": "~2015-now",
+          "text": "My father was a geologist, and I grew up admiring his rock collection. I’m not sure where most of his rocks came from, though I know he collected some of them in college. Most of mine I’ve bought, with a few lucky finds. Lately I’ve been getting my daughter into rocks too, and we have a tumbler where I mostly fail at making rocks pretty enough for her to turn into jewelry.",
+          "status": "I can’t identify most of them. Help welcome."
+        },
+        {
+          "id": "shirts",
+          "name": "Two t-shirts",
+          "type": "thing",
+          "date": "2026-10",
+          "row": 2,
+          "alwaysShowLabel": true,
+          "when": "Oct 2026",
+          "text": "Two designs in my shop, Too Curious Not To.",
+          "status": "At cost, rounded up to the nearest dollar",
+          "links": [
+            {
+              "label": "Too Curious Not To ↗",
+              "href": "https://www.bonfire.com/store/too-curious-not-to/"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Strategy exercises · Russ Hamer</title>
+<meta name="description" content="The answer to your hardest problem is probably already inside your company.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Strategy exercises · Russ Hamer">
+<meta property="og:description" content="The answer to your hardest problem is probably already inside your company.">
+<meta property="og:url" content="https://russhamer.com/strategy-exercises/">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://russhamer.com/strategy-exercises/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,700;1,400&amp;family=DM+Mono:wght@400;500&amp;display=swap">
+<style>
+/* Values come from design-reference/strategy-exercises.dc.html. */
+html{background:#ebebe5}
+body{margin:0;background:#ebebe5;color:#1b2232;font-family:'Familjen Grotesk','Helvetica Neue',sans-serif;font-size:18px;line-height:1.6}
+a{color:#1b2232;text-decoration-thickness:1px;text-underline-offset:3px}a:hover{color:#7a45c7}
+:focus-visible{outline:2px solid #1b2232;outline-offset:3px}
+p{margin:0}
+.mono{font-family:'DM Mono',ui-monospace,monospace;font-size:12px}
+.wrap{max-width:860px;margin:0 auto;padding:32px 22px 96px;display:flex;flex-direction:column;gap:48px}
+nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav a,.back a{display:inline-block;padding:12px 0;margin:-12px 0}
+header{display:flex;flex-direction:column;gap:18px}
+.kicker{display:flex;align-items:center;gap:10px;font-weight:500}
+.kicker span{width:12px;height:12px;background:#7a45c7;display:inline-block}
+h1{margin:0;font-size:clamp(36px,5.6vw,64px);line-height:1;letter-spacing:-0.035em;font-weight:700}
+.lede{font-size:20px;max-width:680px}
+.looking{display:inline-flex;align-items:center;gap:8px;color:#b8410e;font-weight:500}
+.looking span{color:#e0531f}
+section{display:flex;flex-direction:column;gap:16px}
+.h2{margin:0;font-size:26px;line-height:1.15;letter-spacing:-0.015em;font-weight:700}
+.rows{display:flex;flex-direction:column}
+.row{display:flex;flex-wrap:wrap;gap:4px 24px;padding:14px 0;border-top:1px solid #cfcfc7}
+.row:last-child{border-bottom:1px solid #cfcfc7}
+.row b{flex:1 1 220px;font-weight:700}
+.row i{flex:2 1 260px;color:#2a2f3a}
+.row span{flex:2 1 300px;color:#43464d}
+.steps{display:flex;flex-wrap:wrap;gap:16px 14px;padding-top:6px}
+.step{flex:1 1 150px;display:flex;flex-direction:column;gap:6px;padding-top:10px;border-top:4px solid #7a45c7}
+.step b{font-weight:700}
+.step span{color:#43464d;font-size:15px;line-height:1.45}
+.muted{color:#5a5d64}
+footer{display:flex;flex-direction:column;gap:10px;border-top:2px solid #1b2232;padding-top:28px}
+footer>p:first-child{font-size:20px;max-width:640px}
+.big-email{font-size:clamp(28px,4.4vw,48px);font-weight:700;letter-spacing:-0.025em;line-height:1.05;overflow-wrap:anywhere}
+.back{padding-top:12px}
+</style>
+<script src="../assets/site.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+
+<nav class="mono" aria-label="Site">
+<a href="../">← russhamer.com</a>
+<span class="muted">Aug 2026-now</span>
+</nav>
+
+<main style="display:flex;flex-direction:column;gap:48px">
+<header>
+<p class="kicker"><span></span>Strategy exercises</p>
+<h1>The answer to your hardest problem is probably already inside your company.</h1>
+<p class="lede">With two friends, I build custom strategy exercises for companies. We take the problem you’re actually worried about, build a working model of it, and run it live with your own people in their real roles. You leave with a set of directions your team worked out for themselves.</p>
+<p class="looking"><span aria-hidden="true">●</span>We’re early, and looking for the first organization willing to try one.</p>
+</header>
+
+<section>
+<h2 class="h2">Why bother</h2>
+<p>Most strategy doesn’t fail in the analysis. The recommendation was usually fine. It was just decided by a small group of people who won’t have to carry it out, and then handed to people who had no part in reaching it, so the plan comes out thinner than it should and gets adopted slower than it should.</p>
+<p>Consultants are the right call for plenty of questions, and I don’t have any problem with that. That being said, bringing in outside help moves responsibility outward, which is great when somebody needs to absorb a painful call and terrible when what you need is for your own people to own the way forward. People commit to what they work out much more than to what they’re told. That’s the whole bet here, and it’s the same bet I made with Lyceum, just in a different medium.</p>
+</section>
+
+<section style="gap:14px">
+<h2 class="h2">What kinds of problems</h2>
+<div class="rows">
+<div class="row"><b>A decision you’re about to make</b><i>We’re committing to something big. What are we not seeing?</i></div>
+<div class="row"><b>A plan you’ve already committed to</b><i>What breaks this, and how early would we know?</i></div>
+<div class="row"><b>Two groups that keep colliding</b><i>Why do we keep working against ourselves?</i></div>
+<div class="row"><b>A problem you keep failing to crack</b><i>Why does our usual playbook stop working here?</i></div>
+</div>
+</section>
+
+<section>
+<h2 class="h2">How it works</h2>
+<p>We spend a few weeks learning your situation, mostly by talking with the people closest to the problem, and then build a working model of your business around it. Your people take on the roles they actually hold. Incentives conflict the way they really conflict, information sits where it really sits, and new developments arrive faster than anyone can comfortably absorb. Your team then has to do what it would do for real: negotiate, decide, and commit. We facilitate, observe all of it, and record every decision as it’s made.</p>
+<div class="steps">
+<div class="step"><b>Discovery</b><span>A conversation with you, then 1:1s with the people closest to the problem.</span></div>
+<div class="step"><b>Design</b><span>Several weeks. Built from scratch around your situation.</span></div>
+<div class="step"><b>Briefing</b><span>Everyone is briefed and the ground rules are set ahead of time.</span></div>
+<div class="step"><b>The session</b><span>A half day or a full day.</span></div>
+<div class="step"><b>Debrief</b><span>Same day, while it’s still fresh.</span></div>
+<div class="step"><b>Written findings</b><span>What your team concluded, and what we observed.</span></div>
+</div>
+<div class="rows" style="padding-top:10px">
+<div class="row"><b>Focused · 8 to 20 people, half a day</b><span>The executive team, or one function and its closest partners. For problems that really are leadership problems.</span></div>
+<div class="row"><b>Broad · 30 to 100 people, a full day</b><span>Leadership plus the people who’ll actually carry it out. For when the answer depends on details leadership doesn’t have.</span></div>
+</div>
+</section>
+
+<section>
+<h2 class="h2">An example</h2>
+<p>Say you’re six weeks from signing an acquisition. Forty-five people, your executive team plus two levels down, spend a day working through the eighteen months after close. Teams represent your own functions, the leadership of the company you’re acquiring, a few of your largest customers, and your nearest competitor, and each team gets its own briefing and information the others don’t have. The day moves quarter by quarter. Agreements get negotiated face to face and committed in writing, and then each quarter brings what quarters bring: integration runs over budget, a key engineer resigns, a competitor launches against you, etc.</p>
+<p>What you walk out with is your team’s answer. A sequencing your operators argued for and would defend, a list of assumptions nobody actually owned, and a room full of people who have already worked through the first eighteen months once.</p>
+<p class="mono muted">Illustrative. Every exercise is built from scratch around your situation.</p>
+</section>
+
+<section style="gap:10px">
+<h2 class="h2">What it isn’t</h2>
+<p>It isn’t market research or competitive analysis; the focus is your own organization. It isn’t team building either. No trust falls, no personality tests. And it isn’t a forecast. The point is for your people to work out what they’d do.</p>
+</section>
+</main>
+
+<footer id="contact">
+<p>If you have a problem you think might fit, email me. The first conversation is free, and short, and if an exercise isn’t the right tool for it I’ll tell you.</p>
+<a class="email big-email" data-u="hello" data-d="russhamer.com" hidden></a><noscript><span class="big-email">hello [at] russhamer [dot] com</span></noscript>
+<p class="mono back"><a href="../">← Back to everything else</a></p>
+</footer>
+
+</div>
+</body>
+</html>
