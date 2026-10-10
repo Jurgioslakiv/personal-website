@@ -68,7 +68,7 @@
     "blurb": "Where I set the price, it’s set at cost.",
     "items": [
       {
-        "name": "Two t-shirts",
+        "name": "T-shirts",
         "text": "At cost, rounded up to the nearest dollar.",
         "linkLabel": "Too Curious Not To",
         "href": "https://www.bonfire.com/store/too-curious-not-to/"
@@ -569,13 +569,13 @@
         },
         {
           "id": "shirts",
-          "name": "Two t-shirts",
+          "name": "T-shirts",
           "type": "thing",
           "date": "2026-10",
           "row": 2,
           "alwaysShowLabel": true,
           "when": "Oct 2026",
-          "text": "Two designs in my shop, Too Curious Not To.",
+          "text": "Designs in my shop, Too Curious Not To.",
           "status": "At cost, rounded up to the nearest dollar",
           "links": [
             {
