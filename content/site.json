@@ -615,14 +615,6 @@
           "status": "At cost, rounded up to the nearest dollar",
           "links": [
             {
-              "label": "Decision Tree ↗",
-              "href": "https://www.bonfire.com/decision-tree/"
-            },
-            {
-              "label": "The Pull ↗",
-              "href": "https://www.bonfire.com/the-pull/"
-            },
-            {
               "label": "Too Curious Not To ↗",
               "href": "https://www.bonfire.com/store/too-curious-not-to/"
             }
