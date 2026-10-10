@@ -34,7 +34,7 @@ They update themselves. Every day the deploy pulls the newest posts from Substac
 ## Adding an image to an item
 
 1. Put the image in `assets/img/` (for example `assets/img/rocks.jpg`). A 16:10 shape fits best; around 1200 × 750 is plenty.
-2. On the item in `site.json`, add `"image": "assets/img/rocks.jpg"` and, if the picture shows something worth describing, `"imageAlt": "A tray of tumbled rocks"`.
+2. On the item in `site.json`, add `"image": "assets/img/rocks.jpg"` and, if the picture shows something worth describing, `"imageAlt": "A tray of tumbled rocks"`. For a tall image like a book cover, also add `"imageShape": "portrait"` so link previews use a small square card.
 
 Items without an image just don't show the image slot.
 

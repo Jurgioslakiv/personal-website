@@ -443,7 +443,7 @@ for (const { it } of byId.values()) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(it.name)} · Russ Hamer</title>
 <meta name="description" content="${esc(plain(it.text))}">
-${socialTags({ title: `${it.name} · Russ Hamer`, description: plain(it.text), url, image: abs(ownImage ? it.image : "assets/og-home.png"), large: !ownImage })}
+${socialTags({ title: `${it.name} · Russ Hamer`, description: plain(it.text), url, image: abs(ownImage ? it.image : "assets/og-home.png"), large: !ownImage || it.imageShape !== "portrait" })}
 <link rel="canonical" href="${esc(url)}">
 <meta name="robots" content="noindex">
 <meta http-equiv="refresh" content="0; url=../#${esc(it.id)}">

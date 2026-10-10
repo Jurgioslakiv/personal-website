@@ -203,7 +203,8 @@
             }
           ],
           "image": "assets/img/kierkegaard-parables.jpg",
-          "imageAlt": "Cover of Understanding Kierkegaard’s Parables by Russell Hamer"
+          "imageAlt": "Cover of Understanding Kierkegaard’s Parables by Russell Hamer",
+          "imageShape": "portrait"
         },
         {
           "id": "esportsch",
@@ -614,15 +615,25 @@
           "status": "At cost, rounded up to the nearest dollar",
           "links": [
             {
+              "label": "Decision Tree ↗",
+              "href": "https://www.bonfire.com/decision-tree/"
+            },
+            {
+              "label": "The Pull ↗",
+              "href": "https://www.bonfire.com/the-pull/"
+            },
+            {
               "label": "Too Curious Not To ↗",
               "href": "https://www.bonfire.com/store/too-curious-not-to/"
             }
-          ]
+          ],
+          "image": "assets/img/tshirts.png",
+          "imageAlt": "The two shirts: Decision Tree, a branching tree on green, and The Pull, a swirl of the words too curious not to on navy"
         }
       ]
     }
   ],
   "analytics": {
-    "goatcounter": "TODO"
+    "goatcounter": "russhamer"
   }
 }
