@@ -133,6 +133,11 @@ a:hover { color: var(--orange); }
 .it:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
 .it[aria-pressed="true"] .mk { box-shadow: 0 0 0 3px var(--bg), 0 0 0 5px var(--ink); }
 
+/* A caption over a whole row of diamonds, e.g. "Book chapters". */
+.row-cap { position: absolute; height: 46px; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; pointer-events: none; }
+.row-cap .lb { font-size: 13px; line-height: 1.1; white-space: nowrap; font-weight: 500; color: var(--soft); }
+.row-cap .track { height: 12px; }
+
 /* Diamond labels that only show on hover, focus, or when selected. */
 .plb { visibility: hidden; background: var(--bg); padding: 1px 4px; }
 .it:hover .plb, .it:focus-visible .plb, .it[aria-pressed="true"] .plb { visibility: visible; }
@@ -163,7 +168,7 @@ a:hover { color: var(--orange); }
 .js .js-only { display: inline; }
 
 .sel-wrap { display: flex; flex-wrap: wrap; gap: 24px 48px; align-items: flex-start; }
-.sel-img { flex: 1 1 300px; max-width: 420px; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; }
+.sel-img { flex: 1 1 300px; max-width: 420px; width: 100%; aspect-ratio: 16 / 10; object-fit: contain; background: #e3e3dc; display: block; box-sizing: border-box; padding: 12px; }
 .sel-body { flex: 1 1 360px; display: flex; flex-direction: column; gap: 10px; }
 .sel-text { font-size: 19px; max-width: 560px; }
 .status { color: var(--muted); font-weight: 500; }

@@ -6,10 +6,12 @@
 // index.html is generated here. The strategy exercises page and the 404 page are
 // plain HTML in pages/ and are copied as they are, along with everything in assets/.
 
-import { readFile, writeFile, mkdir, cp, rm } from "node:fs/promises";
+import { readFile, writeFile, mkdir, cp, rm, readdir } from "node:fs/promises";
+import { execSync } from "node:child_process";
 
 const OUT = "_site";
 const site = JSON.parse(await readFile("content/site.json", "utf8"));
+const BASE = (site.meta && site.meta.url) || "https://russhamer.com/";
 const essays = await readFile("essays.json", "utf8")
   .then((s) => JSON.parse(s).essays || [])
   .catch(() => []);
@@ -45,6 +47,16 @@ const ym = (s) => {
 };
 
 const today = new Date();
+
+// "Updated" is the date of the last commit that changed the content or the pages,
+// so the daily essay rebuild doesn't bump it.
+const updated = (() => {
+  try {
+    const d = execSync("git log -1 --format=%cs -- content pages", { encoding: "utf8" }).trim();
+    if (/^\d{4}-\d{2}-\d{2}$/.test(d)) return d;
+  } catch {}
+  return today.toISOString().slice(0, 10);
+})();
 const NOW = (() => {
   const y = today.getUTCFullYear();
   const m = today.getUTCMonth();
@@ -117,12 +129,25 @@ function timelineItem(it, th) {
   return `<button type="button" class="it${end}${past ? " past" : ""}" data-id="${esc(it.id)}" aria-pressed="false" aria-label="${aria}" style="left:${left.toFixed(2)}%;width:${width.toFixed(2)}%;top:${top}px">${label("", end)}<span class="track"><span class="mk bar ${h}" style="${markStyle(it, c)}"></span></span></button>`;
 }
 
+// A caption for a whole row of diamonds ("Book chapters"), sitting where the first
+// one's label would go. Hovering a diamond still shows its own name over it.
+function rowCaptions(th) {
+  return Object.entries(th.rowLabels || {})
+    .map(([row, text]) => {
+      const onRow = th.items.filter((it) => String(it.row) === row);
+      if (!onRow.length) return "";
+      const left = Math.min(...onRow.map((it) => x(startOf(it))));
+      return `<span class="row-cap" aria-hidden="true" style="left:${left.toFixed(2)}%;top:${Number(row) * 52 + 2}px"><span class="lb">${esc(text)}</span><span class="track"></span></span>`;
+    })
+    .join("");
+}
+
 function timeline() {
   const lanes = site.threads
     .map(
       (th) => `<div class="lane" data-thread="${esc(th.id)}">
 <div class="lane-name"><button type="button" class="lane-btn" data-thread="${esc(th.id)}" aria-pressed="false"><span class="sw" style="background:${th.color}"></span>${esc(th.name)}</button></div>
-<div class="lane-track" style="height:${th.rows * 52 + 8}px">${th.items.map((it) => timelineItem(it, th)).join("")}</div>
+<div class="lane-track" style="height:${th.rows * 52 + 8}px">${rowCaptions(th)}${th.items.map((it) => timelineItem(it, th)).join("")}</div>
 </div>`
     )
     .join("\n");
@@ -286,9 +311,32 @@ ${form}
 </footer>`;
 }
 
+// ---------- analytics ----------
+
+// GoatCounter: no cookies, no banner. Off until analytics.goatcounter holds a site code.
+const gc = site.analytics && site.analytics.goatcounter;
+const analytics =
+  gc && !isTodo(gc)
+    ? `<script data-goatcounter="https://${esc(gc)}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>`
+    : "";
+if (!analytics) todos.push("Analytics: analytics.goatcounter is TODO, so nothing is counted");
+
 // ---------- page ----------
 
 const meta = site.meta || {};
+const plain = (s) => String(s ?? "").replace(/\*([^*]+)\*/g, "$1");
+const abs = (path) => new URL(path.replace(/^\//, ""), BASE).href;
+
+function socialTags({ title, description, url, image, large = true }) {
+  return `<meta property="og:type" content="website">
+<meta property="og:site_name" content="Russ Hamer">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(description)}">
+<meta property="og:url" content="${esc(url)}">
+<meta property="og:image" content="${esc(image)}">
+<meta name="twitter:card" content="${large ? "summary_large_image" : "summary"}">`;
+}
+
 const html = `<!doctype html>
 <html lang="en">
 <head>
@@ -296,13 +344,11 @@ const html = `<!doctype html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(meta.title || site.intro.name)}</title>
 <meta name="description" content="${esc(meta.description)}">
-<meta property="og:type" content="website">
-<meta property="og:title" content="${esc(meta.title || site.intro.name)}">
-<meta property="og:description" content="${esc(meta.description)}">
-<meta property="og:url" content="${esc(meta.url)}">
-<meta name="twitter:card" content="summary">
-<link rel="canonical" href="${esc(meta.url)}">
+${socialTags({ title: meta.title || site.intro.name, description: meta.description, url: BASE, image: abs("assets/og-home.png") })}
+<link rel="canonical" href="${esc(BASE)}">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+${analytics}
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,700;1,400&amp;family=DM+Mono:wght@400;500&amp;display=swap">
@@ -314,7 +360,7 @@ const html = `<!doctype html>
 <div class="wrap">
 
 <header class="top">
-<div class="mono topbar"><span>russhamer.com</span><span class="muted">Updated ${longDate(site.updated)}</span></div>
+<div class="mono topbar"><span>russhamer.com</span><span class="muted">Updated ${longDate(updated)}</span></div>
 <div class="intro">
 <h1 class="name">${site.intro.name.split(" ").map(esc).join("<br>")}</h1>
 <div class="intro-r">
@@ -372,5 +418,46 @@ await cp("CNAME", `${OUT}/CNAME`);
 await cp("essays.json", `${OUT}/essays.json`).catch(() => {});
 await writeFile(`${OUT}/index.html`, html);
 
-console.log(`Built ${OUT}/ (${essays.length ? "latest essay: " + essays[0].title : "no essays.json"})`);
+// The hand-written pages mark where analytics goes with <!-- analytics -->.
+for (const f of ["404.html", "strategy-exercises/index.html"]) {
+  const p = `${OUT}/${f}`;
+  await writeFile(p, (await readFile(p, "utf8")).replace("<!-- analytics -->", analytics));
+}
+
+// Share pages: russhamer.com/precedent/ has Precedent's own title, text and image
+// for link previews, then sends people on to /#precedent. Crawlers never see what
+// comes after a #, so a plain /#precedent link always previews as the homepage.
+const taken = new Set(await readdir(OUT));
+let shared = 0;
+for (const { it } of byId.values()) {
+  if (taken.has(it.id) || !/^[a-z0-9-]+$/.test(it.id)) {
+    console.warn(`No share page for "${it.id}" (the name is taken or isn't a plain slug).`);
+    continue;
+  }
+  const url = abs(`${it.id}/`);
+  const ownImage = !!it.image;
+  const page = `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(it.name)} · Russ Hamer</title>
+<meta name="description" content="${esc(plain(it.text))}">
+${socialTags({ title: `${it.name} · Russ Hamer`, description: plain(it.text), url, image: abs(ownImage ? it.image : "assets/og-home.png"), large: !ownImage })}
+<link rel="canonical" href="${esc(url)}">
+<meta name="robots" content="noindex">
+<meta http-equiv="refresh" content="0; url=../#${esc(it.id)}">
+<script>location.replace("../#${esc(it.id)}")</script>
+</head>
+<body style="font-family:sans-serif;background:#ebebe5;color:#1b2232">
+<p><a href="../#${esc(it.id)}" style="color:#1b2232">${esc(it.name)} on russhamer.com</a></p>
+</body>
+</html>
+`;
+  await mkdir(`${OUT}/${it.id}`, { recursive: true });
+  await writeFile(`${OUT}/${it.id}/index.html`, page);
+  shared++;
+}
+
+console.log(`Built ${OUT}/ (${shared} share pages; ${essays.length ? "latest essay: " + essays[0].title : "no essays.json"}; updated ${updated})`);
 if (todos.length) console.log("Still TODO:\n  " + [...new Set(todos)].join("\n  "));

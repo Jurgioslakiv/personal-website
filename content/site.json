@@ -1,5 +1,4 @@
 {
-  "updated": "2026-10-10",
   "meta": {
     "title": "Russ Hamer",
     "description": "Russ Hamer: philosophy, education, ventures, games, and esports.",
@@ -202,7 +201,9 @@
               "label": "Amazon ↗",
               "href": "https://www.amazon.com/Understanding-Kierkegaards-Parables-Russell-Hamer/dp/1476681023"
             }
-          ]
+          ],
+          "image": "assets/img/kierkegaard-parables.jpg",
+          "imageAlt": "Cover of Understanding Kierkegaard’s Parables by Russell Hamer"
         },
         {
           "id": "esportsch",
@@ -242,7 +243,10 @@
             }
           ]
         }
-      ]
+      ],
+      "rowLabels": {
+        "1": "Book chapters"
+      }
     },
     {
       "id": "edu",
@@ -260,7 +264,13 @@
           "detailLabel": "School",
           "when": "2009-May 2018",
           "text": "Philosophy. My dissertation became the Kierkegaard book; my research was on reflection and how people come to understand things.",
-          "status": "Finished"
+          "status": "Finished",
+          "links": [
+            {
+              "label": "The dissertation ↗",
+              "href": "https://epublications.marquette.edu/dissertations_mu/768"
+            }
+          ]
         },
         {
           "id": "mu-adj",
@@ -304,7 +314,13 @@
           "row": 1,
           "when": "2024-2026",
           "text": "Associate director of Miami University’s Master’s in Entrepreneurship and Emerging Technology; designed and taught a graduate course on emerging technology.",
-          "status": "Finished"
+          "status": "Finished",
+          "links": [
+            {
+              "label": "The program ↗",
+              "href": "https://programs.miamioh.edu/programs/entrepreneurship-emerging-technology-online-meet/"
+            }
+          ]
         },
         {
           "id": "miami",
@@ -339,7 +355,8 @@
               "label": "Email me",
               "href": "#contact"
             }
-          ]
+          ],
+          "lookingForSomeone": true
         }
       ]
     },
@@ -357,8 +374,14 @@
           "end": "2026-03",
           "row": 0,
           "when": "2023-2026",
-          "text": "The EdTech startup I co-founded and ran. Our product is used at Fortune 500 companies; Perceptyx acquired it in 2026.",
-          "status": "Acquired"
+          "text": "The EdTech startup I co-founded and ran. We built AI that checks whether people actually understood their training, got it into Fortune 500 companies, and Perceptyx acquired us in March 2026. It lives on as Develop, which is now my day job.",
+          "status": "Acquired",
+          "links": [
+            {
+              "label": "The acquisition ↗",
+              "href": "https://blog.perceptyx.com/perceptyx-acquires-learning-platform-lyceum-ai"
+            }
+          ]
         },
         {
           "id": "develop",
@@ -503,7 +526,13 @@
           "row": 0,
           "when": "2020-2024",
           "text": "Director of esports. Designed three courses and a new minor in Esports and Game Studies.",
-          "status": "Finished"
+          "status": "Finished",
+          "links": [
+            {
+              "label": "Mount St. Mary’s esports ↗",
+              "href": "https://msmary.edu/athletics/esports.html"
+            }
+          ]
         },
         {
           "id": "voice",
@@ -515,7 +544,13 @@
           "detailLabel": "Volunteer",
           "when": "2021-2025",
           "text": "Co-executive director of VOICE of Intercollegiate Esports, a nonprofit working to improve collegiate esports. Took it from insolvent to stable.",
-          "status": "Finished"
+          "status": "Finished",
+          "links": [
+            {
+              "label": "VOICE ↗",
+              "href": "https://voicecollegiate.org/"
+            }
+          ]
         },
         {
           "id": "usae",
@@ -586,5 +621,8 @@
         }
       ]
     }
-  ]
+  ],
+  "analytics": {
+    "goatcounter": "TODO"
+  }
 }

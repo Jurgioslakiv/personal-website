@@ -8,13 +8,24 @@ Everything on the homepage comes from `content/site.json`. You can edit it right
 
 - **A timeline item:** find it under `threads` → `items`. `text`, `status`, `when` and `links` are what show in the details panel. `"end": "now"` keeps a bar running to today.
 - **"What's new":** edit `whatsNew.items`. Each entry points at a timeline item by its `id`. Update `whatsNew.date` too.
-- **"Updated" date** (top right): `updated`.
+- **"Updated" date** (top right): sets itself to the date of the last change to `content/` or `pages/`.
 - **A link you don't have yet:** set `"href": "TODO"`. The button is left off until you fill it in.
 - **Italics:** wrap a title in asterisks, like `*Black Mirror*`.
 - **Orange dot:** `"lookingForSomeone": true`.
+- **A caption over a row of diamonds** (like "Book chapters"): `rowLabels` on the thread, keyed by row number.
 - **Newsletter:** once you have a Buttondown account, put your username in `contact.newsletter.username`. The sign-up form appears when it's no longer `TODO`.
 
 Use a hyphen for date ranges, not an en or em dash. The build warns you if one sneaks in.
+
+## Sharing one thing
+
+Send `russhamer.com/precedent` (any item's `id`) rather than `russhamer.com/#precedent`. The first shows that item's own title, text, and image in link previews, then opens it on the homepage. The second always previews as the homepage, because link previews never see what comes after a `#`.
+
+The preview images for the homepage and the strategy page are `assets/og-home.png` and `assets/og-strategy.png`. Their sources are in `og/`.
+
+## Analytics
+
+GoatCounter, which needs no cookie banner. Put your site code (the `xyz` in `xyz.goatcounter.com`) in `analytics.goatcounter`. Besides page views, every item someone opens is counted as an event, like `item/precedent`.
 
 ## Essays
 
@@ -50,7 +61,8 @@ Then open http://localhost:8080.
 | `essays.json` | Latest essays from Substack (rewritten daily) |
 | `pages/strategy-exercises/index.html` | The strategy exercises page, as plain HTML |
 | `pages/404.html` | The not-found page |
-| `assets/` | Stylesheet, script, favicon, and `img/` for item images |
+| `assets/` | Stylesheet, script, icons, preview images, and `img/` for item images |
+| `og/` | Sources for the preview images |
 | `scripts/build.mjs` | Builds the site into `_site/` |
 | `scripts/fetch-essays.mjs` | Pulls essays from Substack |
 | `.github/workflows/publish.yml` | Fetch, build, deploy to GitHub Pages |

@@ -51,8 +51,16 @@
     d.querySelector("summary").focus({ preventScroll: true });
   }
 
+  // With analytics on, each opened item is counted as an event, e.g. "item/precedent".
+  function track(id) {
+    const send = () => window.goatcounter && window.goatcounter.count && window.goatcounter.count({ path: "item/" + id, title: id, event: true });
+    if (window.goatcounter && window.goatcounter.count) send();
+    else window.addEventListener("load", send, { once: true });
+  }
+
   function openItem(id, scroll = true) {
     if (!template(id)) return false;
+    track(id);
     current = id;
     mark(id);
     setHash(id);
@@ -99,6 +107,7 @@
       const d = e.target;
       if (!(d instanceof HTMLDetailsElement) || !d.closest(".mlist") || !mobile.matches) return;
       if (d.open) {
+        if (current !== d.id) track(d.id);
         current = d.id;
         mark(d.id);
         setHash(d.id);
