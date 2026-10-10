@@ -29,7 +29,7 @@ a:hover { color: var(--orange); }
 .muted { color: var(--muted); }
 .soft { color: var(--soft); }
 .small { font-size: 15px; padding-top: 6px; }
-.look { color: var(--orange); }
+.look { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--orange); vertical-align: 0.05em; }
 
 .wrap {
   max-width: 1240px;
@@ -72,7 +72,7 @@ a:hover { color: var(--orange); }
 .lg-job { height: 12px; }
 .lg-own { height: 4px; }
 .lg-pt { width: 10px; height: 10px; background: var(--ink); transform: rotate(45deg); display: inline-block; margin: 0 4px; }
-.lg-dot { font-size: 14px; }
+.lg-dot { width: 11px; height: 11px; margin: 0 3px; }
 
 /* ---------- timeline ---------- */
 

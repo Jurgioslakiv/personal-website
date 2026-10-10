@@ -72,7 +72,7 @@ const links = (it) =>
     return !isTodo(l.href);
   });
 
-const dot = `<span class="look" aria-hidden="true">●</span>`;
+const dot = `<span class="look" aria-hidden="true"></span>`;
 
 // ---------- timeline ----------
 
@@ -87,8 +87,11 @@ function timelineItem(it, th) {
   const c = past ? th.color + "73" : th.color;
   const aria = esc(`${it.name}${it.lookingForSomeone ? ", looking for someone" : ""}, ${it.when}`);
   const top = it.row * 52 + 2;
-  const label = (cls) =>
-    `<span class="lb${cls}">${esc(it.name)}${it.lookingForSomeone ? " " + dot : ""}</span>`;
+  // On right-aligned labels the dot goes first, so it doesn't sit under the "now" line.
+  const label = (cls, end) =>
+    it.lookingForSomeone && end
+      ? `<span class="lb${cls}">${dot} ${esc(it.name)}</span>`
+      : `<span class="lb${cls}">${esc(it.name)}${it.lookingForSomeone ? " " + dot : ""}</span>`;
 
   if (it.type === "thing" || it.type === "visits") {
     const points = it.type === "thing" ? [it.date] : it.visits;
@@ -98,7 +101,7 @@ function timelineItem(it, th) {
         const end = left > 78 ? " end" : "";
         const first = i === 0;
         const showLabel = it.type === "visits" ? first : it.alwaysShowLabel;
-        const lb = it.type === "visits" && !first ? "" : label(showLabel ? "" : " plb");
+        const lb = it.type === "visits" && !first ? "" : label(showLabel ? "" : " plb", end);
         const shape = it.type === "visits" ? "vd" : "pt";
         const a = it.type === "visits" && !first ? esc(`${it.name}, visit ${i + 1}`) : aria;
         return `<button type="button" class="it p${end}${past ? " past" : ""}" data-id="${esc(it.id)}" aria-pressed="false" aria-label="${a}" style="left:${left.toFixed(2)}%;width:12px;top:${top}px">${lb}<span class="track"><span class="mk ${shape}" style="background:${c}"></span></span></button>`;
@@ -111,7 +114,7 @@ function timelineItem(it, th) {
   const width = Math.max(0.6, right - left);
   const end = left > 78 ? " end" : "";
   const h = it.type === "own-time" ? "own" : "job";
-  return `<button type="button" class="it${end}${past ? " past" : ""}" data-id="${esc(it.id)}" aria-pressed="false" aria-label="${aria}" style="left:${left.toFixed(2)}%;width:${width.toFixed(2)}%;top:${top}px">${label("")}<span class="track"><span class="mk bar ${h}" style="${markStyle(it, c)}"></span></span></button>`;
+  return `<button type="button" class="it${end}${past ? " past" : ""}" data-id="${esc(it.id)}" aria-pressed="false" aria-label="${aria}" style="left:${left.toFixed(2)}%;width:${width.toFixed(2)}%;top:${top}px">${label("", end)}<span class="track"><span class="mk bar ${h}" style="${markStyle(it, c)}"></span></span></button>`;
 }
 
 function timeline() {
@@ -326,7 +329,7 @@ const html = `<!doctype html>
 <span class="lg" role="listitem"><i class="lg-job"></i>a job</span>
 <span class="lg" role="listitem"><i class="lg-own"></i>on my own time</span>
 <span class="lg" role="listitem"><span class="lg-pt"></span>something you can read, play or wear</span>
-<span class="lg" role="listitem"><span class="look lg-dot" aria-hidden="true">●</span>I’m looking for someone</span>
+<span class="lg" role="listitem"><span class="look lg-dot" aria-hidden="true"></span>I’m looking for someone</span>
 <span class="muted" role="listitem">Recent years get more room.</span>
 </div>
 

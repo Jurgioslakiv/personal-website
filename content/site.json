@@ -68,12 +68,6 @@
     "blurb": "Where I set the price, it’s set at cost.",
     "items": [
       {
-        "name": "Unveiled",
-        "text": "Two-player card game for adult couples. 18+. At cost.",
-        "linkLabel": "The Game Crafter",
-        "href": "https://www.thegamecrafter.com/games/unveiled:-a-sensual-duel"
-      },
-      {
         "name": "Two t-shirts",
         "text": "At cost, rounded up to the nearest dollar.",
         "linkLabel": "Too Curious Not To",
@@ -85,6 +79,12 @@
         "text": "Book, 2021. Publisher’s price, not mine.",
         "linkLabel": "Amazon",
         "href": "https://www.amazon.com/Understanding-Kierkegaards-Parables-Russell-Hamer/dp/1476681023"
+      },
+      {
+        "name": "Unveiled",
+        "text": "Two-player card game for adult couples. 18+. At cost.",
+        "linkLabel": "The Game Crafter",
+        "href": "https://www.thegamecrafter.com/games/unveiled:-a-sensual-duel"
       },
       {
         "name": "“Designing Student Reflections…”",
@@ -289,9 +289,9 @@
           "name": "Illinois State",
           "type": "job",
           "start": "2018-09",
-          "end": "2019-05",
+          "end": "2020-01",
           "row": 1,
-          "when": "2018-2019",
+          "when": "2018-2020",
           "text": "Instructional assistant professor of philosophy.",
           "status": "Finished"
         },
@@ -487,10 +487,10 @@
           "name": "ISU esports",
           "type": "own-time",
           "start": "2018-09",
-          "end": "2019-05",
+          "end": "2020-01",
           "row": 1,
           "detailLabel": "Volunteer",
-          "when": "2018-2019",
+          "when": "2018-2020",
           "text": "Faculty advisor, Redbird Esports at Illinois State.",
           "status": "Finished"
         },
@@ -498,7 +498,7 @@
           "id": "msm",
           "name": "Mount St. Mary’s",
           "type": "job",
-          "start": "2020-09",
+          "start": "2020-01",
           "end": "2024-05",
           "row": 0,
           "when": "2020-2024",
