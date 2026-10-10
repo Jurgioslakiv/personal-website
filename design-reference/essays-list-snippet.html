@@ -1,0 +1,43 @@
+<!--
+  The "Read" list for the homepage. Paste this where the list goes.
+
+  The three links written into the HTML are a fallback: they show if JavaScript is off
+  or essays.json can't load. When essays.json loads, the script replaces them with the
+  latest three from Substack. Nothing here needs editing when you publish.
+-->
+<ol id="essays" class="essays">
+  <li><a href="https://showeressays.substack.com/p/editing-is-for-suckers">Editing is for Suckers</a> <time>Aug 14</time></li>
+  <li><a href="https://showeressays.substack.com/p/on-hallucinations">On Hallucinations</a> <time>Aug 7</time></li>
+  <li><a href="https://showeressays.substack.com/p/on-risk-taking">On Risk Taking</a> <time>Jul 29</time></li>
+</ol>
+
+<script>
+  (async () => {
+    try {
+      const res = await fetch("/essays.json", { cache: "no-cache" });
+      if (!res.ok) return;
+      const { essays } = await res.json();
+      if (!essays || !essays.length) return;
+      const list = document.getElementById("essays");
+      const fmt = new Intl.DateTimeFormat("en-US", { month: "short", day: "numeric" });
+      list.replaceChildren(
+        ...essays.slice(0, 3).map((e) => {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = e.url;
+          a.textContent = e.title;
+          li.append(a, " ");
+          if (e.date) {
+            const t = document.createElement("time");
+            t.dateTime = e.date;
+            t.textContent = fmt.format(new Date(e.date));
+            li.append(t);
+          }
+          return li;
+        })
+      );
+    } catch {
+      // Keep the fallback links.
+    }
+  })();
+</script>
