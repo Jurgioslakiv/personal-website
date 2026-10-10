@@ -83,8 +83,8 @@
         "name": "Understanding Kierkegaard’s Parables",
         "italic": true,
         "text": "Book, 2021. Publisher’s price, not mine.",
-        "linkLabel": "McFarland",
-        "href": "TODO: McFarland product page"
+        "linkLabel": "Amazon",
+        "href": "https://www.amazon.com/Understanding-Kierkegaards-Parables-Russell-Hamer/dp/1476681023"
       },
       {
         "name": "“Designing Student Reflections…”",
@@ -119,7 +119,7 @@
           "links": [
             {
               "label": "Find the book ↗",
-              "href": "TODO"
+              "href": "https://www.amazon.com/Futurama-Philosophy-Pizza-Paradoxes-Good/dp/1500810258"
             }
           ]
         },
@@ -135,7 +135,7 @@
           "links": [
             {
               "label": "Find the book ↗",
-              "href": "TODO"
+              "href": "https://www.amazon.com/Its-Always-Sunny-Philosophy-Analyzed/dp/0812698916"
             }
           ]
         },
@@ -151,7 +151,7 @@
           "links": [
             {
               "label": "Find the book ↗",
-              "href": "TODO"
+              "href": "https://www.amazon.com/Black-Mirror-Philosophy-Blackwell-Culture/dp/1119578264"
             }
           ]
         },
@@ -183,7 +183,7 @@
           "links": [
             {
               "label": "Find the book ↗",
-              "href": "TODO"
+              "href": "https://link.springer.com/rwe/10.1007/978-3-319-97134-6_36-1"
             }
           ]
         },
@@ -199,8 +199,8 @@
           "status": "In print (publisher’s price)",
           "links": [
             {
-              "label": "McFarland ↗",
-              "href": "TODO"
+              "label": "Amazon ↗",
+              "href": "https://www.amazon.com/Understanding-Kierkegaards-Parables-Russell-Hamer/dp/1476681023"
             }
           ]
         },
@@ -216,7 +216,7 @@
           "links": [
             {
               "label": "Find the book ↗",
-              "href": "TODO"
+              "href": "https://www.amazon.com/Routledge-Handbook-Esports-International-Handbooks/dp/1032531509"
             }
           ]
         },
@@ -373,7 +373,7 @@
           "links": [
             {
               "label": "About Develop ↗",
-              "href": "TODO"
+              "href": "https://go.perceptyx.com/platform/develop"
             }
           ]
         },
@@ -531,7 +531,7 @@
           "links": [
             {
               "label": "USA Esports ↗",
-              "href": "TODO"
+              "href": "https://www.usaesports.us/"
             }
           ]
         }
