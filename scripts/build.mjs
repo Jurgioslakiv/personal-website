@@ -97,7 +97,7 @@ function markStyle(it, c) {
 function timelineItem(it, th) {
   const past = isPast(it);
   const c = past ? th.color + "73" : th.color;
-  const aria = esc(`${it.name}${it.lookingForSomeone ? ", looking for someone" : ""}, ${it.when}`);
+  const aria = esc(`${it.name}${it.lookingForSomeone ? ", you can get involved" : ""}, ${it.when}`);
   const top = it.row * 52 + 2;
   // On right-aligned labels the dot goes first, so it doesn't sit under the "now" line.
   const label = (cls, end) =>
@@ -182,12 +182,14 @@ function image(it) {
   return `<img class="sel-img" src="${esc(rel(it.image))}" alt="${esc(it.imageAlt || "")}" loading="lazy">`;
 }
 
+const status = (it) => (it.status ? `<p class="status${it.lookingForSomeone ? " looking" : ""}">${rich(it.status)}</p>` : "");
+
 function panelTemplate(it, th) {
   return `<template id="t-${esc(it.id)}"><div class="sel-wrap">${image(it)}<div class="sel-body">
 <p class="mono muted">${esc(th.name)} · ${esc(kindLabel(it))} · ${esc(it.when)}</p>
 <h2 class="h-xl">${esc(it.name)}</h2>
 <p class="sel-text">${rich(it.text)}</p>
-<p class="status${it.lookingForSomeone ? " looking" : ""}">${rich(it.status)}</p>
+${status(it)}
 <div class="btns">${linkButtons(it)}<button type="button" class="ext back" data-back>← What’s new</button></div>
 </div></div></template>`;
 }
@@ -208,7 +210,7 @@ ${site.threads
 <ul>${items
       .map(
         (it) => `<li><details id="${esc(it.id)}" name="item"><summary>${miniMark(it, th)}<span class="mname${isPast(it) ? " past" : ""}">${esc(it.name)}${it.lookingForSomeone ? " " + dot : ""}</span><span class="mono mwhen">${esc(it.when)}</span></summary>
-<div class="mbody">${image(it)}<p class="mono muted">${esc(kindLabel(it))}</p><p>${rich(it.text)}</p><p class="status${it.lookingForSomeone ? " looking" : ""}">${rich(it.status)}</p>${links(it).length ? `<div class="btns">${linkButtons(it)}</div>` : ""}</div>
+<div class="mbody">${image(it)}<p class="mono muted">${esc(kindLabel(it))}</p><p>${rich(it.text)}</p>${status(it)}${links(it).length ? `<div class="btns">${linkButtons(it)}</div>` : ""}</div>
 </details></li>`
       )
       .join("\n")}</ul>
@@ -375,7 +377,7 @@ ${analytics}
 <span class="lg" role="listitem"><i class="lg-job"></i>a job</span>
 <span class="lg" role="listitem"><i class="lg-own"></i>on my own time</span>
 <span class="lg" role="listitem"><span class="lg-pt"></span>something you can read, play or wear</span>
-<span class="lg" role="listitem"><span class="look lg-dot" aria-hidden="true"></span>I’m looking for someone</span>
+<span class="lg" role="listitem"><span class="look lg-dot" aria-hidden="true"></span>you can get involved</span>
 <span class="muted" role="listitem">Recent years get more room.</span>
 </div>
 

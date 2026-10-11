@@ -276,6 +276,14 @@ a:hover { color: var(--orange); }
   .foot .mono a { padding: 14px 0; margin: -14px 0; }
 }
 
+/* Orange dots pulse a few times when the page loads, then sit still. */
+@keyframes look-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(224, 83, 31, 0.6); }
+  70%, 100% { box-shadow: 0 0 0 8px rgba(224, 83, 31, 0); }
+}
+.look { animation: look-pulse 1.8s ease-out 0.6s 3; }
+
 @media (prefers-reduced-motion: reduce) {
   .lane { transition: none; }
+  .look { animation: none; }
 }

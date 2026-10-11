@@ -12,7 +12,7 @@
   "contact": {
     "email": "hello@russhamer.com",
     "linkedin": "https://www.linkedin.com/in/russhamer/",
-    "closingLine": "The orange dots are where I’d like company.",
+    "closingLine": "The orange dots are where you can get involved.",
     "newsletter": {
       "label": "A short note a few times a year, when the threads change. Separate from the essays.",
       "provider": "buttondown",
@@ -600,8 +600,7 @@
           "row": 1,
           "detailLabel": "Hobby",
           "when": "~2015-now",
-          "text": "My father was a geologist, and I grew up admiring his rock collection. I’m not sure where most of his rocks came from, though I know he collected some of them in college. Most of mine I’ve bought, with a few lucky finds. Lately I’ve been getting my daughter into rocks too, and we have a tumbler where I mostly fail at making rocks pretty enough for her to turn into jewelry.",
-          "status": "I can’t identify most of them. Help welcome."
+          "text": "My father was a geologist, and I grew up admiring his rock collection. I’m not sure where most of his rocks came from, though I know he collected some of them in college. Most of mine I’ve bought, with a few lucky finds. Lately I’ve been getting my daughter into rocks too, and we have a tumbler where I mostly fail at making rocks pretty enough for her to turn into jewelry."
         },
         {
           "id": "shirts",
