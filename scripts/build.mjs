@@ -8,6 +8,7 @@
 
 import { readFile, writeFile, mkdir, cp, rm, readdir } from "node:fs/promises";
 import { execSync } from "node:child_process";
+import { existsSync } from "node:fs";
 
 const OUT = "_site";
 const site = JSON.parse(await readFile("content/site.json", "utf8"));
@@ -460,6 +461,34 @@ ${socialTags({ title: `${it.name} · Russ Hamer`, description: plain(it.text), u
   await writeFile(`${OUT}/${it.id}/index.html`, page);
   shared++;
 }
+
+// Old addresses (mostly from the Weebly site) that Google still sends people to.
+// GitHub Pages can't do server redirects, so each gets a tiny page that forwards.
+for (const [from, to] of Object.entries(site.redirects || {})) {
+  if (from === "/index.html") continue; // that's the homepage itself now
+  const file = from.replace(/^\//, "");
+  if (taken.has(file) || existsSync(`${OUT}/${file}`)) continue;
+  await writeFile(
+    `${OUT}/${file}`,
+    `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Russ Hamer</title><link rel="canonical" href="${esc(abs(to))}"><meta http-equiv="refresh" content="0; url=${esc(to)}"><script>location.replace(${JSON.stringify(to)})</script></head><body><a href="${esc(to)}">russhamer.com</a></body></html>
+`
+  );
+}
+
+await writeFile(`${OUT}/robots.txt`, `User-agent: *
+Allow: /
+
+Sitemap: ${abs("sitemap.xml")}
+`);
+await writeFile(
+  `${OUT}/sitemap.xml`,
+  `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url><loc>${abs("")}</loc><lastmod>${updated}</lastmod></url>
+<url><loc>${abs("strategy-exercises/")}</loc><lastmod>${updated}</lastmod></url>
+</urlset>
+`
+);
 
 console.log(`Built ${OUT}/ (${shared} share pages; ${essays.length ? "latest essay: " + essays[0].title : "no essays.json"}; updated ${updated})`);
 if (todos.length) console.log("Still TODO:\n  " + [...new Set(todos)].join("\n  "));

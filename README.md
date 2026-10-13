@@ -27,6 +27,10 @@ The preview images for the homepage and the strategy page are `assets/og-home.pn
 
 GoatCounter, which needs no cookie banner. Put your site code (the `xyz` in `xyz.goatcounter.com`) in `analytics.goatcounter`. Besides page views, every item someone opens is counted as an event, like `item/precedent`.
 
+## Old addresses
+
+`redirects` in `site.json` forwards old pages (mostly from the Weebly site) to the new one, so links from Google and elsewhere still land somewhere. Add a line if GoatCounter shows people hitting a page that says "Nothing here."
+
 ## Essays
 
 They update themselves. Every day the deploy pulls the newest posts from Substack into `essays.json` and shows the latest three. If Substack is down, the last saved list is used.

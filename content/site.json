@@ -626,5 +626,24 @@
   ],
   "analytics": {
     "goatcounter": "russhamer"
+  },
+  "redirects": {
+    "/contact.html": "/#contact",
+    "/about-me.html": "/",
+    "/benefits-of-counseling.html": "/",
+    "/biography.html": "/",
+    "/counseling-and-insurance.html": "/",
+    "/cv.html": "/",
+    "/faqs.html": "/",
+    "/index.html": "/",
+    "/meeting.html": "/",
+    "/need-for-study.html": "/",
+    "/philosophical-counseling.html": "/",
+    "/philosophical-issues.html": "/",
+    "/philosophy-and-psychoanalysis.html": "/",
+    "/philosophy-and-psychology.html": "/",
+    "/professional-documents.html": "/",
+    "/reading.html": "/",
+    "/services.html": "/"
   }
 }
