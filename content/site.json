@@ -600,7 +600,15 @@
           "row": 1,
           "detailLabel": "Hobby",
           "when": "~2015-now",
-          "text": "My father was a geologist, and I grew up admiring his rock collection. I’m not sure where most of his rocks came from, though I know he collected some of them in college. Most of mine I’ve bought, with a few lucky finds. Lately I’ve been getting my daughter into rocks too, and we have a tumbler where I mostly fail at making rocks pretty enough for her to turn into jewelry."
+          "text": "My father was a geologist, and I grew up admiring his rock collection. I’m not sure where most of his rocks came from, though I know he collected some of them in college. Most of mine I’ve bought, with a few lucky finds. Lately I’ve been getting my daughter into rocks too, and we have a tumbler where I mostly fail at making rocks pretty enough for her to turn into jewelry.",
+          "image": "assets/img/rocks.jpg",
+          "imageAlt": "A bismuth crystal, stepped and iridescent gold and purple",
+          "links": [
+            {
+              "label": "See the rocks",
+              "href": "/rocks/"
+            }
+          ]
         },
         {
           "id": "shirts",

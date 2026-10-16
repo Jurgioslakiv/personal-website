@@ -42,6 +42,10 @@ They update themselves. Every day the deploy pulls the newest posts from Substac
 
 Items without an image just don't show the image slot.
 
+## The rocks page
+
+`russhamer.com/rocks` is built from `content/rocks.json`: one card per rock, with a `name`, an optional `note`, and its `photos`. The first photo listed is the card cover. Photos live in `assets/rocks/` as `r01-1.jpg` (full size, 1200px wide) plus `r01-1-t.jpg` (a 640px square thumbnail). To add a rock, add both files and a new entry. Ask Claude to resize new phone photos; the originals are about 3MB each.
+
 ## Rerunning the deploy
 
 Actions tab → "Publish site" → "Run workflow". It also runs on every push to `main` and once a day around 7am Eastern.
@@ -67,6 +71,7 @@ Then open http://localhost:8080.
 | `pages/404.html` | The not-found page |
 | `assets/` | Stylesheet, script, icons, preview images, and `img/` for item images |
 | `og/` | Sources for the preview images |
+| `content/rocks.json` | The rocks page: names, notes, photo order |
 | `scripts/build.mjs` | Builds the site into `_site/` |
 | `scripts/fetch-essays.mjs` | Pulls essays from Substack |
 | `.github/workflows/publish.yml` | Fetch, build, deploy to GitHub Pages |

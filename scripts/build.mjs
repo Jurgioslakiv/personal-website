@@ -53,7 +53,7 @@ const today = new Date();
 // so the daily essay rebuild doesn't bump it.
 const updated = (() => {
   try {
-    const d = execSync("git log -1 --format=%cs -- content pages", { encoding: "utf8" }).trim();
+    const d = execSync("git log -1 --format=%cs -- content pages assets/rocks", { encoding: "utf8" }).trim();
     if (/^\d{4}-\d{2}-\d{2}$/.test(d)) return d;
   } catch {}
   return today.toISOString().slice(0, 10);
@@ -427,6 +427,140 @@ for (const f of ["404.html", "strategy-exercises/index.html"]) {
   await writeFile(p, (await readFile(p, "utf8")).replace("<!-- analytics -->", analytics));
 }
 
+// ---------- rocks page ----------
+
+// russhamer.com/rocks/: one card per rock from content/rocks.json. Photos live in
+// assets/rocks/ as <id>.jpg (full) and <id>-t.jpg (square thumbnail); the first
+// photo listed is the card's cover. Tapping a card opens all of that rock's photos.
+const rocksData = JSON.parse(await readFile("content/rocks.json", "utf8"));
+const rocksItem = byId.get("rocks")?.it;
+const slug = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+const rockCards = rocksData.rocks
+  .map((r, i) => {
+    const n = r.photos.length;
+    return `<li><a class="rock" href="../assets/rocks/${esc(r.photos[0])}.jpg" data-i="${i}">
+<img src="../assets/rocks/${esc(r.photos[0])}-t.jpg" alt="${esc(r.name)}" width="640" height="640"${i > 5 ? ' loading="lazy"' : ""}>
+<span class="rock-name">${esc(r.name)}</span>${r.note ? `<span class="rock-note">${rich(r.note)}</span>` : ""}<span class="mono muted">${n} photo${n === 1 ? "" : "s"}</span>
+</a></li>`;
+  })
+  .join("\n");
+const rocksJson = JSON.stringify(rocksData.rocks.map((r) => ({ name: r.name, slug: slug(r.name), photos: r.photos }))).replace(/</g, "\\u003c");
+const rocksPage = `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>${esc(rocksData.title)} · Russ Hamer</title>
+<meta name="description" content="${esc(plain(rocksItem?.text))}">
+${socialTags({ title: `${rocksData.title} · Russ Hamer`, description: plain(rocksItem?.text), url: abs("rocks/"), image: abs("assets/img/rocks.jpg") })}
+<link rel="canonical" href="${esc(abs("rocks/"))}">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+${analytics}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400;0,500;0,700;1,400&amp;family=DM+Mono:wght@400;500&amp;display=swap">
+<style>
+html{background:#ebebe5}
+body{margin:0;background:#ebebe5;color:#1b2232;font-family:'Familjen Grotesk','Helvetica Neue',sans-serif;font-size:17px;line-height:1.5}
+a{color:#1b2232;text-decoration-thickness:1px;text-underline-offset:3px}a:hover{color:#e0531f}
+:focus-visible{outline:2px solid #1b2232;outline-offset:3px}
+p{margin:0}
+.mono{font-family:'DM Mono',ui-monospace,monospace;font-size:12px}
+.muted{color:#5a5d64}
+.wrap{max-width:1240px;margin:0 auto;padding:32px 22px 96px;display:flex;flex-direction:column;gap:40px}
+nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+nav a,.back a{display:inline-block;padding:12px 0;margin:-12px 0}
+header{display:flex;flex-direction:column;gap:16px;max-width:760px}
+.kicker{display:flex;align-items:center;gap:10px;font-weight:500}
+.kicker span{width:12px;height:12px;background:#6f6c66;display:inline-block}
+h1{margin:0;font-size:clamp(48px,7vw,96px);line-height:.9;letter-spacing:-0.04em;font-weight:700}
+.lede{font-size:19px;color:#43464d}
+.grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:32px 20px}
+.rock{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:#1b2232}
+.rock img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;display:block;background:#dcdcd4;transition:transform .2s}
+.rock:hover img{transform:scale(1.02)}
+.rock:hover .rock-name{text-decoration:underline;text-underline-offset:3px}
+.rock-name{font-weight:700;font-size:18px;line-height:1.2;padding-top:4px}
+.rock-note{color:#43464d;font-size:15px;line-height:1.45}
+footer{border-top:2px solid #1b2232;padding-top:24px}
+dialog{border:0;padding:0;margin:0;width:100%;max-width:100%;height:100%;max-height:100%;background:#ebebe5;color:#1b2232}
+dialog::backdrop{background:#ebebe5}
+.v{box-sizing:border-box;height:100%;display:grid;grid-template-rows:auto 1fr auto;gap:12px;padding:16px 22px 20px}
+.v-top{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.v-name{margin:0;font-size:24px;line-height:1.15;font-weight:700;letter-spacing:-0.015em}
+.v-img{min-height:0;display:flex;align-items:center;justify-content:center;touch-action:pan-y}
+.v-img img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.v-bottom{display:flex;justify-content:center;align-items:center;gap:16px}
+.v button{font:inherit;font-weight:500;min-width:44px;min-height:44px;padding:0 16px;border:1.5px solid #1b2232;background:none;color:#1b2232;cursor:pointer}
+.v button:hover{background:#1b2232;color:#ebebe5}
+.v button[disabled]{opacity:.3;cursor:default;background:none;color:#1b2232}
+@media (max-width:600px){.grid{grid-template-columns:1fr 1fr;gap:24px 14px}.rock-name{font-size:16px}.rock-note{font-size:14px}}
+@media (prefers-reduced-motion:reduce){.rock img{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav class="mono" aria-label="Site"><a href="../#rocks">← russhamer.com</a><span class="muted">${esc(rocksItem?.when || "")}</span></nav>
+<main style="display:flex;flex-direction:column;gap:40px">
+<header>
+<p class="kicker"><span></span>Hobbies</p>
+<h1>${esc(rocksData.title)}</h1>
+<p class="lede">${rich(rocksItem?.text)}</p>
+</header>
+<ul class="grid">
+${rockCards}
+</ul>
+</main>
+<footer><p class="mono back"><a href="../">← Back to everything else</a></p></footer>
+</div>
+<dialog id="viewer" aria-labelledby="v-name">
+<div class="v">
+<div class="v-top"><h2 class="v-name" id="v-name"></h2><button type="button" data-close aria-label="Close">Close</button></div>
+<div class="v-img"><img alt=""></div>
+<div class="v-bottom"><button type="button" data-prev aria-label="Previous photo">←</button><span class="mono v-count" aria-live="polite"></span><button type="button" data-next aria-label="Next photo">→</button></div>
+</div>
+</dialog>
+<script>
+(() => {
+  const rocks = ${rocksJson};
+  const dlg = document.getElementById("viewer");
+  if (!dlg.showModal) return; // very old browsers just follow the link to the photo
+  const img = dlg.querySelector(".v-img img"), name = dlg.querySelector(".v-name"), count = dlg.querySelector(".v-count");
+  const prev = dlg.querySelector("[data-prev]"), next = dlg.querySelector("[data-next]");
+  let r = 0, p = 0, opener = null;
+  const src = (id) => "../assets/rocks/" + id + ".jpg";
+  function show() {
+    const rock = rocks[r], n = rock.photos.length;
+    img.src = src(rock.photos[p]);
+    img.alt = rock.name + ", photo " + (p + 1) + " of " + n;
+    name.textContent = rock.name;
+    count.textContent = n > 1 ? (p + 1) + " of " + n : "";
+    prev.hidden = next.hidden = n < 2;
+    prev.disabled = p === 0; next.disabled = p === n - 1;
+    if (p + 1 < n) new Image().src = src(rock.photos[p + 1]);
+  }
+  const step = (d) => { const n = rocks[r].photos.length; if (p + d >= 0 && p + d < n) { p += d; show(); } };
+  document.querySelector(".grid").addEventListener("click", (e) => {
+    const a = e.target.closest(".rock"); if (!a) return;
+    e.preventDefault(); opener = a; r = +a.dataset.i; p = 0; show(); dlg.showModal();
+    const g = window.goatcounter; if (g && g.count) g.count({ path: "rock/" + rocks[r].slug, title: rocks[r].name, event: true });
+  });
+  prev.onclick = () => step(-1); next.onclick = () => step(1);
+  dlg.querySelector("[data-close]").onclick = () => dlg.close();
+  dlg.addEventListener("close", () => opener && opener.focus());
+  dlg.addEventListener("keydown", (e) => { if (e.key === "ArrowLeft") step(-1); if (e.key === "ArrowRight") step(1); });
+  let x0 = null;
+  dlg.addEventListener("pointerdown", (e) => { x0 = e.clientX; });
+  dlg.addEventListener("pointerup", (e) => { if (x0 !== null && Math.abs(e.clientX - x0) > 50) step(e.clientX < x0 ? 1 : -1); x0 = null; });
+})();
+</script>
+</body>
+</html>
+`;
+await mkdir(`${OUT}/rocks`, { recursive: true });
+await writeFile(`${OUT}/rocks/index.html`, rocksPage);
+
 // Share pages: russhamer.com/precedent/ has Precedent's own title, text and image
 // for link previews, then sends people on to /#precedent. Crawlers never see what
 // comes after a #, so a plain /#precedent link always previews as the homepage.
@@ -486,6 +620,7 @@ await writeFile(
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>${abs("")}</loc><lastmod>${updated}</lastmod></url>
 <url><loc>${abs("strategy-exercises/")}</loc><lastmod>${updated}</lastmod></url>
+<url><loc>${abs("rocks/")}</loc><lastmod>${updated}</lastmod></url>
 </urlset>
 `
 );

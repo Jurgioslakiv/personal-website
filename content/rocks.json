@@ -1,0 +1,124 @@
+{
+  "title": "Rocks",
+  "rocks": [
+    {
+      "name": "Bismuth",
+      "photos": [
+        "r01-1",
+        "r01-2"
+      ]
+    },
+    {
+      "name": "Opal in matrix",
+      "photos": [
+        "r02-1",
+        "r02-2"
+      ]
+    },
+    {
+      "name": "Opal",
+      "photos": [
+        "r03-2",
+        "r03-1",
+        "r03-3"
+      ]
+    },
+    {
+      "name": "Spinel on quartz",
+      "photos": [
+        "r04-1",
+        "r04-2"
+      ]
+    },
+    {
+      "name": "I really don’t know",
+      "photos": [
+        "r05-1",
+        "r05-2"
+      ]
+    },
+    {
+      "name": "Azurite",
+      "photos": [
+        "r06-1",
+        "r06-2",
+        "r06-3",
+        "r06-4"
+      ]
+    },
+    {
+      "name": "Fire agate in matrix (I think)",
+      "photos": [
+        "r07-1",
+        "r07-2"
+      ]
+    },
+    {
+      "name": "Iron meteorite",
+      "photos": [
+        "r08-1",
+        "r08-2"
+      ]
+    },
+    {
+      "name": "Amber",
+      "photos": [
+        "r09-2",
+        "r09-1"
+      ]
+    },
+    {
+      "name": "Peacock ore",
+      "photos": [
+        "r10-1",
+        "r10-2",
+        "r10-3"
+      ]
+    },
+    {
+      "name": "Cavansite",
+      "photos": [
+        "r11-1",
+        "r11-2"
+      ]
+    },
+    {
+      "name": "Pyrite in matrix",
+      "photos": [
+        "r12-1",
+        "r12-2"
+      ]
+    },
+    {
+      "name": "Bauxite",
+      "note": "Aluminum is the traditional tenth anniversary gift, so my wife got me the rock aluminum comes from.",
+      "photos": [
+        "r13-1",
+        "r13-2"
+      ]
+    },
+    {
+      "name": "Obsidian? Coal? Slag?",
+      "note": "Found it in my yard. It doesn’t rub off on me at all, which I think counts against coal.",
+      "photos": [
+        "r14-2",
+        "r14-1"
+      ]
+    },
+    {
+      "name": "Pyrite in some other rock",
+      "note": "Fool’s gold. As a cube, like the one above, it doesn’t fool anybody, but scattered through this rock and catching the light, it looks exactly like gold.",
+      "photos": [
+        "r15-1",
+        "r15-2"
+      ]
+    },
+    {
+      "name": "Petrified wood",
+      "photos": [
+        "r16-1",
+        "r16-2"
+      ]
+    }
+  ]
+}
