@@ -295,22 +295,12 @@ function emailLink(cls) {
 
 function footer() {
   const c = site.contact;
-  const n = c.newsletter;
-  const form =
-    n && n.username && !isTodo(n.username)
-      ? `<form class="nl" action="https://buttondown.com/api/emails/embed-subscribe/${esc(n.username)}" method="post">
-<label for="nl-email">${esc(n.label)}</label>
-<span class="nl-row"><input id="nl-email" name="email" type="email" placeholder="Your email" autocomplete="email" required><button type="submit">Subscribe</button></span>
-</form>`
-      : "";
-  if (!form) todos.push("Newsletter: contact.newsletter.username (Buttondown) is TODO, so the sign-up form is hidden");
   return `<footer id="contact" class="foot">
 <div class="foot-l">
 <p>${rich(c.closingLine)}</p>
 ${emailLink("big-email")}
 <p class="mono muted"><a href="${esc(c.linkedin)}">LinkedIn</a></p>
 </div>
-${form}
 </footer>`;
 }
 

@@ -266,10 +266,6 @@ a:hover { color: var(--orange); }
 .foot-l { flex: 1 1 360px; display: flex; flex-direction: column; gap: 6px; }
 .big-email { font-size: clamp(30px, 4.4vw, 54px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.05; overflow-wrap: anywhere; }
 .foot .mono a { display: inline-block; padding: 12px 0; margin: -12px 0; }
-.nl { flex: 1 1 380px; display: flex; flex-direction: column; gap: 8px; max-width: 520px; }
-.nl-row { display: flex; flex-wrap: wrap; }
-.nl input { flex: 1 1 220px; min-height: 48px; box-sizing: border-box; padding: 8px 14px; font: inherit; border: 1.5px solid var(--ink); border-radius: 0; background: var(--panel); color: var(--ink); }
-.nl button { min-height: 48px; padding: 0 20px; font: inherit; font-weight: 700; border: 0; border-radius: 0; background: var(--ink); color: var(--bg); cursor: pointer; }
 
 @media (max-width: 759.98px) {
   .news-name, .big-email { display: inline-block; padding: 10px 0; margin: -10px 0; }

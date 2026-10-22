@@ -12,12 +12,7 @@
   "contact": {
     "email": "hello@russhamer.com",
     "linkedin": "https://www.linkedin.com/in/russhamer/",
-    "closingLine": "The orange dots are where you can get involved.",
-    "newsletter": {
-      "label": "A short note a few times a year, when the threads change. Separate from the essays.",
-      "provider": "buttondown",
-      "username": "TODO"
-    }
+    "closingLine": "The orange dots are where you can get involved."
   },
   "timeline": {
     "start": "2009-07",

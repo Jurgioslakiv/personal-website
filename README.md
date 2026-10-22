@@ -13,7 +13,6 @@ Everything on the homepage comes from `content/site.json`. You can edit it right
 - **Italics:** wrap a title in asterisks, like `*Black Mirror*`.
 - **Orange dot:** `"lookingForSomeone": true`.
 - **A caption over a row of diamonds** (like "Book chapters"): `rowLabels` on the thread, keyed by row number.
-- **Newsletter:** once you have a Buttondown account, put your username in `contact.newsletter.username`. The sign-up form appears when it's no longer `TODO`.
 
 Use a hyphen for date ranges, not an en or em dash. The build warns you if one sneaks in.
 
