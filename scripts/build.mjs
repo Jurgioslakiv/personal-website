@@ -340,6 +340,7 @@ function profileData() {
     mainEntity: {
       "@type": "Person",
       name: site.intro.name,
+      alternateName: p.alternateName,
       url: BASE,
       description: site.intro.bio,
       jobTitle: p.jobTitle,
