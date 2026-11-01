@@ -13,6 +13,8 @@ Everything on the homepage comes from `content/site.json`. You can edit it right
 - **Italics:** wrap a title in asterisks, like `*Black Mirror*`.
 - **Orange dot:** `"lookingForSomeone": true`.
 - **A caption over a row of diamonds** (like "Book chapters"): `rowLabels` on the thread, keyed by row number.
+- **The bio under the tagline:** `intro.bio`. Search engines also read it as the description of you.
+- **What search engines know about you:** `meta.description` is the summary under your name in results. `meta.person` (job, employer, school, and `sameAs`, your other profiles) is hidden data that helps Google tell you apart from other Hamers. Add a profile URL to `sameAs` when you make one.
 
 Use a hyphen for date ranges, not an en or em dash. The build warns you if one sneaks in.
 

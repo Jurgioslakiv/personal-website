@@ -1,12 +1,22 @@
 {
   "meta": {
     "title": "Russ Hamer",
-    "description": "Russ Hamer: philosophy, education, ventures, games, and esports.",
-    "url": "https://russhamer.com/"
+    "description": "Russ Hamer: philosopher, co-founder of Lyceum AI, and product manager at Perceptyx. Writing, teaching, esports, games, and the rest.",
+    "url": "https://russhamer.com/",
+    "person": {
+      "jobTitle": "Principal Product Manager",
+      "worksFor": "Perceptyx",
+      "alumniOf": "Marquette University",
+      "sameAs": [
+        "https://www.linkedin.com/in/russhamer/",
+        "https://showeressays.substack.com/"
+      ]
+    }
   },
   "intro": {
     "name": "Russ Hamer",
     "tagline": "Too curious not to.",
+    "bio": "I’m a philosopher (PhD, Marquette) who taught for years, engaged in collegiate esports, and co-founded Lyceum AI, which Perceptyx bought in 2026. Now I’m a product manager there, and on my own time I make games and write, among other things.",
     "hint": "Each row is a thread that’s run through my life. Click a thread to follow it, or anything on it to open it."
   },
   "contact": {

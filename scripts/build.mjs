@@ -330,6 +330,27 @@ function socialTags({ title, description, url, image, large = true }) {
 <meta name="twitter:card" content="${large ? "summary_large_image" : "summary"}">`;
 }
 
+// Tells search engines the homepage is a profile of one person, and which other profiles are the same person.
+function profileData() {
+  const p = meta.person || {};
+  const data = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    dateModified: updated,
+    mainEntity: {
+      "@type": "Person",
+      name: site.intro.name,
+      url: BASE,
+      description: site.intro.bio,
+      jobTitle: p.jobTitle,
+      worksFor: p.worksFor && { "@type": "Organization", name: p.worksFor },
+      alumniOf: p.alumniOf && { "@type": "CollegeOrUniversity", name: p.alumniOf },
+      sameAs: p.sameAs && p.sameAs.length ? p.sameAs : undefined,
+    },
+  };
+  return `<script type="application/ld+json">${JSON.stringify(data).replace(/</g, "\\u003c")}</script>`;
+}
+
 const html = `<!doctype html>
 <html lang="en">
 <head>
@@ -339,6 +360,7 @@ const html = `<!doctype html>
 <meta name="description" content="${esc(meta.description)}">
 ${socialTags({ title: meta.title || site.intro.name, description: meta.description, url: BASE, image: abs("assets/og-home.png") })}
 <link rel="canonical" href="${esc(BASE)}">
+${profileData()}
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 ${analytics}
@@ -358,6 +380,7 @@ ${analytics}
 <h1 class="name">${site.intro.name.split(" ").map(esc).join("<br>")}</h1>
 <div class="intro-r">
 <p class="tagline">${esc(site.intro.tagline)}</p>
+${site.intro.bio ? `<p>${esc(site.intro.bio)}</p>` : ""}
 <p class="soft">${esc(site.intro.hint)}</p>
 </div>
 </div>
