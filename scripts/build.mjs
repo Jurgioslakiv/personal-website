@@ -8,7 +8,7 @@
 
 import { readFile, writeFile, mkdir, cp, rm, readdir } from "node:fs/promises";
 import { execSync } from "node:child_process";
-import { existsSync } from "node:fs";
+import { existsSync, statSync } from "node:fs";
 
 const OUT = "_site";
 const site = JSON.parse(await readFile("content/site.json", "utf8"));
@@ -435,9 +435,11 @@ await cp("CNAME", `${OUT}/CNAME`);
 await cp("essays.json", `${OUT}/essays.json`).catch(() => {});
 await writeFile(`${OUT}/index.html`, html);
 
-// The hand-written pages mark where analytics goes with <!-- analytics -->.
-for (const f of ["404.html", "strategy-exercises/index.html"]) {
+// The hand-written pages mark where analytics goes with <!-- analytics -->. Precedent's game is
+// built in its own repo and copied into pages/precedent/play/.
+for (const f of ["404.html", "strategy-exercises/index.html", "precedent/play/index.html"]) {
   const p = `${OUT}/${f}`;
+  if (!existsSync(p)) continue;
   await writeFile(p, (await readFile(p, "utf8")).replace("<!-- analytics -->", analytics));
 }
 
@@ -581,7 +583,11 @@ await writeFile(`${OUT}/rocks/index.html`, rocksPage);
 const taken = new Set(await readdir(OUT));
 let shared = 0;
 for (const { it } of byId.values()) {
-  if (taken.has(it.id) || !/^[a-z0-9-]+$/.test(it.id)) {
+  // A folder from pages/ may share the name, as precedent/ holds the game at precedent/play/:
+  // the share page goes in it unless it has an index.html of its own.
+  const there = `${OUT}/${it.id}`;
+  const free = !taken.has(it.id) || (statSync(there).isDirectory() && !existsSync(`${there}/index.html`));
+  if (!free || !/^[a-z0-9-]+$/.test(it.id)) {
     console.warn(`No share page for "${it.id}" (the name is taken or isn't a plain slug).`);
     continue;
   }
