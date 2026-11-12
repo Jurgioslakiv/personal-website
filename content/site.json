@@ -99,9 +99,9 @@
       },
       {
         "name": "Precedent",
-        "text": "Free, in the browser, when it’s done. Not online yet.",
-        "linkLabel": "Tell me when",
-        "href": "#contact"
+        "text": "Free, in the browser.",
+        "linkLabel": "Play it",
+        "href": "/precedent/play/"
       }
     ]
   },
@@ -495,12 +495,16 @@
           "detailLabel": "Side project",
           "lookingForSomeone": true,
           "when": "Sep 2026-now",
-          "text": "A digital wargame about kids’ imaginative play. Each level, you make up a new rule to help you beat it, and that rule stays in the game for good. The catch is that the computer gets to use your rules against you in later levels, so you have to be careful what you invent. It’s half wargame, half roguelike, half turn-based tactics, half Calvinball. It’ll be free, in the browser.",
-          "status": "Not online yet. Playtesters wanted once it is.",
+          "text": "A digital wargame about kids’ imaginative play. Each level, you make up a new rule to help you beat it, and that rule stays in the game for good. The catch is that the computer gets to use your rules against you in later levels, so you have to be careful what you invent. It’s half wargame, half roguelike, half turn-based tactics, half Calvinball. It’s free, in the browser.",
+          "status": "Online now. Playtesters wanted: tell me what breaks.",
           "links": [
             {
-              "label": "Tell me when it’s playable",
-              "href": "#contact"
+              "label": "Play it",
+              "href": "/precedent/play/"
+            },
+            {
+              "label": "On itch.io",
+              "href": "https://russhamer.itch.io/precedent"
             }
           ]
         }
