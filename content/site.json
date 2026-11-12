@@ -42,9 +42,14 @@
     ]
   },
   "whatsNew": {
-    "date": "2026-10-09",
+    "date": "2026-11-12",
     "since": "Since the summer.",
     "items": [
+      {
+        "id": "precedent",
+        "month": "Nov",
+        "note": "Put Precedent online. It’s free, in the browser. Tell me what breaks."
+      },
       {
         "id": "shirts",
         "month": "Oct",
