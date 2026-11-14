@@ -1,0 +1,69 @@
+<!-- The note box under Precedent on russhamer.com. scripts/build.mjs puts it at the end of
+     precedent/play/index.html, which is Precedent's own build, copied in from its repo; this box is
+     the site's, so it isn't in the game on itch. Notes go to Precedent's Worker, which emails them
+     to Russ and keeps them (its packages/worker/src/notes.ts, D99 in its DECISIONS.md). It uses the
+     game page's colours (--panel, --line, --ink, --muted). -->
+<section class="note-box" aria-labelledby="note-title">
+  <h2 id="note-title">Send me a note</h2>
+  <p>Thanks for playing! If you've got any thoughts on the game, good or bad, I'd really like to hear them (I'm especially curious about which levels felt too hard). This only goes to me, nobody else sees it.</p>
+  <form id="note-form" data-api="https://precedent.precedent-worker.workers.dev/api/note">
+    <textarea name="said" rows="4" maxlength="2000" required aria-label="Your note"></textarea>
+    <label class="note-contact">Your name or email, if you want me to know or reply
+      <input name="contact" maxlength="200" autocomplete="email">
+    </label>
+    <div class="note-away" aria-hidden="true">
+      <label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label>
+    </div>
+    <div class="note-row">
+      <button class="primary" type="submit">Send</button>
+      <span class="note-status" role="status"></span>
+    </div>
+  </form>
+</section>
+<style>
+  .note-box { max-width: 1180px; margin: 8px auto 40px; padding: 0 16px; }
+  .note-box > * { max-width: 640px; }
+  .note-box h2 { font-size: 18px; margin: 16px 0 6px; }
+  .note-box p { color: var(--muted); margin: 0 0 10px; line-height: 1.5; }
+  .note-box textarea, .note-box input {
+    display: block; width: 100%; box-sizing: border-box; margin: 4px 0 10px; padding: 8px 10px;
+    font: inherit; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 8px;
+  }
+  .note-box textarea { resize: vertical; }
+  .note-contact { display: block; font-size: 14px; color: var(--muted); }
+  .note-away { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+  .note-row { display: flex; align-items: center; gap: 12px; }
+  .note-status { color: var(--muted); font-size: 14px; }
+</style>
+<script>
+  (() => {
+    const form = document.getElementById("note-form");
+    const status = form.querySelector(".note-status");
+    const button = form.querySelector("button");
+    form.addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+      const said = form.said.value.trim();
+      if (!said) return;
+      button.disabled = true;
+      status.textContent = "Sending…";
+      try {
+        const res = await fetch(form.dataset.api, {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ said, contact: form.contact.value.trim(), page: location.pathname, website: form.website.value }),
+        });
+        if (res.ok) {
+          form.said.value = "";
+          status.textContent = "Got it, thanks!";
+        } else if (res.status === 429) {
+          status.textContent = "That's a lot of notes for one day, maybe try again tomorrow?";
+        } else {
+          status.textContent = "That didn't go through, sorry. Maybe try again in a bit?";
+        }
+      } catch {
+        status.textContent = "That didn't go through, sorry. Maybe try again in a bit?";
+      }
+      button.disabled = false;
+    });
+  })();
+</script>

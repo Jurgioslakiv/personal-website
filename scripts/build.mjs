@@ -443,6 +443,18 @@ for (const f of ["404.html", "strategy-exercises/index.html", "precedent/play/in
   await writeFile(p, (await readFile(p, "utf8")).replace("<!-- analytics -->", analytics));
 }
 
+// The note box goes under Precedent here, and only here: the game itself is the same build that's on
+// itch, which has comments of its own.
+{
+  const p = `${OUT}/precedent/play/index.html`;
+  if (existsSync(p)) {
+    const box = await readFile("content/precedent-note.html", "utf8");
+    const page = await readFile(p, "utf8");
+    if (!page.includes("</body>")) throw new Error("precedent/play/index.html has no </body> for the note box");
+    await writeFile(p, page.replace("</body>", `${box}\n</body>`));
+  }
+}
+
 // ---------- rocks page ----------
 
 // russhamer.com/rocks/: one card per rock from content/rocks.json. Photos live in
